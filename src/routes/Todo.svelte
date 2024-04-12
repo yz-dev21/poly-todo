@@ -4,9 +4,6 @@
 </script>
 
 <div class="todo-container">
-    <div class="todo-input">
-        <input />
-    </div>
     <div class="todo-display">
         {#each todoList as todo }
             <TodoItem {todo}/>
