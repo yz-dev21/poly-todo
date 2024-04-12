@@ -1,6 +1,7 @@
 <script>
 	import Sidebar from './Sidebar.svelte';
 	import Todo from './Todo.svelte';
+	import Input from './Input.svelte';
 
 	let inputValue = "";
 	let todoList = [
@@ -28,7 +29,7 @@
       if(inputValue) { // 입력한게 있으면
         let newTodo = {
           id: ++lastId,
-          text: inputValue,
+          name: inputValue,
           completed: false
         }
 
