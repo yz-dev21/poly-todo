@@ -1,6 +1,6 @@
 <script>
 	import Sidebar from './Sidebar.svelte';
-	import Todo from './Todo.svelte';
+	import TodoContainer from './TodoContainer.svelte';
 	import Input from './Input.svelte';
 
 	let inputValue = "";
@@ -37,7 +37,21 @@
         inputValue = "";
       }
 	}
+
+	let deleteTodo = (target) => {
+		let targetArr = todoList.filter((val) => val.id != target.id);
+		todoList = targetArr;
+	}
 	
+	// let toggleComplete = (target) => {
+	// 	let targetId = target.id;
+	// 	todoList.forEach((todo) => {
+	// 		if (todo.id === target.id) {
+	// 			todo.completed ? todo.completed = false : todo.completed = true;
+	// 		}
+	// 	})
+	// }
+
     // todo값을 업데이트 하면서, 엔터키를 누르면 할일이 추가되도록 하는 함수
 	let handleKeyUp = e => {
 		inputValue = e.target.value;
@@ -57,8 +71,8 @@
 <main class="container-fluid">
 	<div class="grid">
 	<!-- <Sidebar /> -->
-		<Input {inputValue} {addTodo} {handleKeyUp}/>
-		<Todo {todoList}/>
+		<Input {inputValue} {addTodo} {handleKeyUp} />
+		<TodoContainer {todoList} {deleteTodo} />
 		<!-- <h1>Hello world</h1> -->
 		
 	</div>
