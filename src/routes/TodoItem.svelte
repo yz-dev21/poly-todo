@@ -1,13 +1,14 @@
 <script>
-    export let todo;
-    export let deleteTodo;
+	import { fade } from 'svelte/transition';
+
+	export let todo;
+	export let deleteTodo;
 </script>
 
-<div>
-    <input type="checkbox" name={todo.name} bind:checked={todo.completed} on:click={() => console.log(todo.completed)}/>
-    <!-- console.log for debug! -->
-    <label for={todo.name}>{todo.name}</label>
-    <button on:click={ () => deleteTodo(todo) }>X</button>
-</div>
+<li transition:fade>
+	<input type="checkbox" name={todo.text} bind:checked={todo.done} />
+	<label for={todo.text}>{todo.text}</label>
+	<button on:click={() => deleteTodo(todo)}>X</button>
+</li>
 
 <!-- ❌ -->
