@@ -15,13 +15,11 @@
 	}
 </script>
 
-<!-- UI so sucks -->
 <form on:submit|preventDefault={handleOnSubmit}>
-	<fieldset role="group">
-		<!-- ^ Ignore warning. -->
-		<input type="text" placeholder="Add Todo" bind:value={inputValue} />
-		<button class="outline">+</button>
-	</fieldset>
+	<div class="input-group mb-3">
+		<input type="text" class="form-control" placeholder="Add Todo" bind:value={inputValue} />
+		<button class="btn btn-outline-primary"><i class="bi bi-plus-lg"></i></button>
+	</div>
 </form>
 
 <style>

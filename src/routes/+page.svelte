@@ -1,20 +1,10 @@
 <script>
 	import TodoList from './TodoList.svelte';
-
-
 </script>
 
-<!-- <header>
-	<button class="header">HEADER</button>
-</header> -->
-
-<main class="container-fluid">
+<div class="container-fluid">
 	<TodoList />
-</main>
-
-<!-- <footer>
-	<button id="footer">FOOTER</button>
-</footer> -->
+</div>
 
 <style>
 	:global(body) {

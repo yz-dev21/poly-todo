@@ -25,23 +25,21 @@
 			done: false
 		};
 
+		// .push(...) returns length of array instead of new array.
 		todoList.push(newTodo);
-		todoList = todoList; // For reactivity - updates UI on submit.
+		// ^ due to this reason, code below is needed for reactivity.
+		todoList = todoList;
 	}
 	function deleteTodo(id) {
+		// .filer(...) returns new array.
 		todoList = todoList.filter((val) => val.id != id);
 	}
 </script>
 
-<div class="grid">
-	<div>
-		<TodoPrompt on:addTodo={addTodo} />
-	</div>
-	<div>
-		<ul>
-			{#each todoList as todo}
-				<TodoItem {todo} on:deleteTodo={deleteTodo(todo.id)} />
-			{/each}
-		</ul>
-	</div>
-</div>
+<TodoPrompt on:addTodo={addTodo} />
+
+<ul>
+	{#each todoList as todo}
+		<TodoItem {todo} on:deleteTodo={deleteTodo(todo.id)} />
+	{/each}
+</ul>
