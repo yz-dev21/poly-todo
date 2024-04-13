@@ -15,21 +15,32 @@
 			done: true
 		}
 	];
+	function addTodo(e) {
+		let lastId = 0;
+		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
 
-	function deleteTodo(todo) {
-		let targetArr = todoList.filter((val) => val.id != todo.id);
-		todoList = targetArr;
+		const newTodo = {
+			id: lastId + 1,
+			text: e.detail.value,
+			done: false
+		};
+
+		todoList.push(newTodo);
+		todoList = todoList; // For reactivity - updates UI on submit.
+	}
+	function deleteTodo(id) {
+		todoList = todoList.filter((val) => val.id != id);
 	}
 </script>
 
 <div class="grid">
 	<div>
-		<TodoPrompt bind:todoList />
+		<TodoPrompt on:addTodo={addTodo} />
 	</div>
 	<div>
 		<ul>
 			{#each todoList as todo}
-				<TodoItem {todo} {deleteTodo} />
+				<TodoItem {todo} on:deleteTodo={deleteTodo(todo.id)} />
 			{/each}
 		</ul>
 	</div>

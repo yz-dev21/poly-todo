@@ -1,28 +1,22 @@
 <script>
-	export let todoList;
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+
 	let inputValue;
 
 	function handleOnSubmit() {
 		if (!inputValue) return;
 
-		let lastId = 0;
-		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
+		dispatch('addTodo', {
+			value: inputValue
+		});
 
-		const newTodo = {
-			id: lastId + 1,
-			text: inputValue,
-			done: false
-		};
-
-		todoList.push(newTodo);
-		todoList = todoList; // For reactivity - updates UI on submit.
-
-		// console.log(todoList);
+		inputValue = '';
 	}
 </script>
 
 <!-- UI so sucks -->
-<form on:submit={handleOnSubmit}>
+<form on:submit|preventDefault={handleOnSubmit}>
 	<fieldset role="group">
 		<!-- ^ Ignore warning. -->
 		<input type="text" placeholder="Add Todo" bind:value={inputValue} />
@@ -31,7 +25,4 @@
 </form>
 
 <style>
-	input {
-		width: 100%;
-	}
 </style>
