@@ -7,7 +7,7 @@
 	function handleOnSubmit() {
 		if (!inputValue) return;
 
-		dispatch('addTodo', {
+		dispatch('add', {
 			value: inputValue
 		});
 

@@ -31,15 +31,15 @@
 		todoList = todoList;
 	}
 	function deleteTodo(id) {
-		// .filer(...) returns new array.
+		// .filter(...) returns new array.
 		todoList = todoList.filter((val) => val.id != id);
 	}
 </script>
 
-<TodoPrompt on:addTodo={addTodo} />
+<TodoPrompt on:add={addTodo} />
 
 <ul>
 	{#each todoList as todo}
-		<TodoItem {todo} on:deleteTodo={deleteTodo(todo.id)} />
+		<TodoItem {todo} on:delete={deleteTodo(todo.id)} />
 	{/each}
 </ul>
