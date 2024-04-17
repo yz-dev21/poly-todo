@@ -3,8 +3,9 @@
 	import TodoPrompt from './TodoPrompt.svelte';
 
 	let todoList = [];
+
 	// todo utility functions
-	function createTodo(pId, pText, pDone, pType) {
+	const createTodo = (pId, pText, pDone, pType) => {
 		const newTodo = {
 			id: pId,
 			text: pText,
@@ -13,8 +14,9 @@
 		};
 		return newTodo;
 	}
+
 	// event handling functions
-	function handleOnAdd(e) {
+	const handleOnAdd = e => {
 		let lastId = 0;
 		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
 
@@ -23,7 +25,8 @@
 		// ^ due to this reason, code below is needed for reactivity.
 		todoList = todoList;
 	}
-	function handleOnDelete(id) {
+
+	const handleOnDelete = id => {
 		// .filter(...) returns new array.
 		todoList = todoList.filter((val) => val.id != id);
 	}
