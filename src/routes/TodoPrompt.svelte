@@ -2,9 +2,9 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	let inputValue;
+	let inputValue = '';
 
-	function handleOnSubmit() {
+	const handleOnSubmit = () => {
 		if (!inputValue) return;
 
 		dispatch('add', {
