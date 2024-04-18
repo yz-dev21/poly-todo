@@ -1,5 +1,5 @@
 <script>
-	import TodoList from './TodoList.svelte';
+	import TodoList from './todoList.svelte';
 </script>
 
 <div class="container-fluid">

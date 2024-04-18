@@ -1,37 +1,34 @@
 <script>
-	import TodoItem from './TodoItem.svelte';
+	import PolyPrompt from './polyPrompt.svelte';
 	import TodoPrompt from './TodoPrompt.svelte';
+	import TodoItem from './todoItem.svelte';
 
+	let polyList = [];
 	let todoList = [];
 
-	// todo utility functions
-	const createTodo = (pId, pText, pDone, pType) => {
-		const newTodo = {
-			id: pId,
-			text: pText,
-			done: pDone,
-			type: pType
-		};
-		return newTodo;
+	const createTodo = (pId, pText, pDone, pPoly) => ({
+		id: pId,
+		text: pText,
+		done: pDone,
+		type: pPoly
+	});
+	function handleOnAddPoly(e) {
+		console.log(e);
 	}
-
-	// event handling functions
-	const handleOnAdd = e => {
+	function handleOnAdd(e) {
 		let lastId = 0;
 		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
 
-		// .push(...) returns length of array instead of new array.
 		todoList.push(createTodo(lastId + 1, e.detail.value, false, []));
-		// ^ due to this reason, code below is needed for reactivity.
 		todoList = todoList;
 	}
 
-	const handleOnDelete = id => {
-		// .filter(...) returns new array.
+	const handleOnDelete = (id) => {
 		todoList = todoList.filter((val) => val.id != id);
-	}
+	};
 </script>
 
+<PolyPrompt on:addPoly={handleOnAddPoly} />
 <TodoPrompt on:add={handleOnAdd} />
 
 <ul>
