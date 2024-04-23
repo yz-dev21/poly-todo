@@ -1,9 +1,17 @@
 <script>
+	import Sidebar from './sidebar.svelte';
 	import TodoList from './todoList.svelte';
 </script>
 
 <div class="container-fluid">
-	<TodoList />
+	<div class="row">
+		<div class="col-sm-2">
+			<Sidebar />
+		</div>
+		<div class="col">
+			<TodoList />
+		</div>
+	</div>
 </div>
 
 <style>
