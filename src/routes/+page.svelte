@@ -1,15 +1,33 @@
 <script>
-	import Sidebar from './sidebar.svelte';
-	import TodoList from './todoList.svelte';
+	import { fade } from 'svelte/transition';
+
+	import Sidebar from './nav/sidebar.svelte';
+	import TodoList from './todo/todoList.svelte';
+	import PolyList from './poly/polyList.svelte';
+	import Settings from './settings.svelte';
+
+	let selectedIndex = 0;
 </script>
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-2">
-			<Sidebar />
+			<Sidebar bind:selectedIndex />
 		</div>
 		<div class="col">
-			<TodoList />
+			{#if selectedIndex == 0}
+				<div>
+					<TodoList />
+				</div>
+			{:else if selectedIndex == 1}
+				<div>
+					<PolyList />
+				</div>
+			{:else if selectedIndex == 2}
+				<div>
+					<Settings />
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>
