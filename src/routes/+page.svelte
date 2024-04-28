@@ -14,7 +14,7 @@
 		<div class="col-sm-2">
 			<Sidebar bind:selectedIndex />
 		</div>
-		<div class="col">
+		<div class="col m-3">
 			{#if selectedIndex == 0}
 				<div>
 					<TodoList />
@@ -35,5 +35,9 @@
 <style>
 	:global(body) {
 		font-family: 'Pretendard', sans-serif;
+	}
+	.container-fluid {
+		width: 100vw;
+        height: 100vh;
 	}
 </style>

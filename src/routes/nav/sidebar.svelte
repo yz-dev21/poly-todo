@@ -15,7 +15,7 @@
 	];
 </script>
 
-<div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top py-3 pe-3 border-end">
+<div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top py-3 pe-3 border-end vh-100">
 	<a
 		href="https://github.com/yz-dev21/poly-todo"
 		class="align-items-center link-dark text-decoration-none ps-3"
