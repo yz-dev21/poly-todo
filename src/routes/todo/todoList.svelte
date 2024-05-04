@@ -12,6 +12,16 @@
             id:2,
             text:"DEBUG_TODO_2",
 			done: false
+        },
+		{
+            id:3,
+            text:"DEBUG_TODO_3",
+			done: false
+        },
+        {
+            id:4,
+            text:"DEBUG_TODO_4",
+			done: true
         }
 	];
 
@@ -20,6 +30,7 @@
 		text: pText,
 		done: pDone
 	});
+	
 	function handleOnAdd(e) {
 		let lastId = 0;
 		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
