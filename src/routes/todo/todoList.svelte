@@ -2,7 +2,18 @@
 	import TodoPrompt from './todoPrompt.svelte';
 	import TodoItem from './todoItem.svelte';
 
-	let todoList = [];
+	let todoList = [
+		{
+            id:1,
+            text:"DEBUG_TODO_1",
+			done: true
+        },
+        {
+            id:2,
+            text:"DEBUG_TODO_2",
+			done: false
+        }
+	];
 
 	const createTodo = (pId, pText, pDone) => ({
 		id: pId,

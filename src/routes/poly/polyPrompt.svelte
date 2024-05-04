@@ -4,7 +4,7 @@
 
 	let inputValue = '';
 
-	const handleOnSubmit = () => {
+	const handleOnSubmit = () => { // 이거 todoPrompt에서랑 함수이름 겹쳐도 문제 없는거지?
 		if (!inputValue) return;
 
 		dispatch('addPoly', {
