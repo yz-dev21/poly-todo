@@ -2,12 +2,14 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
+    // export let poly;
+
 	let inputValue = '';
 
 	const handleOnSubmit = () => { // 이거 todoPrompt에서랑 함수이름 겹쳐도 문제 없는거지?
 		if (!inputValue) return;
 
-		dispatch('addPoly', {
+		dispatch('addCategory', {
 			value: inputValue
 		});
 
@@ -17,7 +19,7 @@
 
 <form on:submit|preventDefault={handleOnSubmit}>
 	<div class="input-group mb-3">
-		<input type="text" class="form-control" placeholder="Add Poly" bind:value={inputValue} />
+		<input type="text" class="form-control" placeholder="Add Category" bind:value={inputValue} />
 		<button class="btn btn-outline-primary"><i class="bi bi-plus-lg"></i></button>
 	</div>
 </form>
