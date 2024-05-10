@@ -23,11 +23,14 @@
 		categoryList.push(createCategory(lastId + 1, e.detail.value));
 		poly.category.push(lastId + 1);
 		categoryList = categoryList;
+		localStorage.setItem('categorylist', JSON.stringify(categoryList));
 	}
 
 	const handleOnDeleteCategory = (id) => {
 		categoryList = categoryList.filter((val) => val.id != id);
+		localStorage.setItem('categorylist', JSON.stringify(categoryList));
 	};
+
 </script>
 
 <!-- <li
@@ -42,7 +45,7 @@
 	</div>
 	<CategoryPrompt
 		{poly}
-		on:addCategory={(e) => {
+		on:add={(e) => {
 			handleOnAddCategory(e);
 		}}
 	/>

@@ -15,14 +15,15 @@
 	};
 </script>
 
-<form on:submit|preventDefault|stopPropagation={handleOnSubmit}>
+
+<form on:submit|preventDefault={handleOnSubmit}>
 	<div class="mb-3">
 		<input
 			type="text"
 			class="form-control"
 			placeholder="Add todo"
 			bind:value={inputValue}
-			on:keydown={(e) => e.key === 'Enter' && e.preventDefault()}
+			
 		/>
 	</div>
 	<div class="mb-3">

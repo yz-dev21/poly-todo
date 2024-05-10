@@ -2,29 +2,28 @@
 	import TodoPrompt from './todoPrompt.svelte';
 	import TodoItem from './todoItem.svelte';
 
-	let todoList = [
-		{
-			id: 1,
-			text: 'DEBUG_TODO_1',
-			done: true
-		},
-		{
-			id: 2,
-			text: 'DEBUG_TODO_2',
-			done: false
-		},
-		{
-			id: 3,
-			text: 'DEBUG_TODO_3',
-			done: false
-		},
-		{
-			id: 4,
-			text: 'DEBUG_TODO_4',
-			done: true
-		}
-	];
+	/* GET TODOLIST */
+	let todoList = [];
+	let localTodoList = localStorage.getItem('todolist');
 
+	if (!localTodoList) {
+		localStorage.setItem('todolist', '[]');
+	} else {
+		todoList = JSON.parse(localTodoList);
+	}
+	
+
+	/* GET POLYLIST */
+	let polyList = [];
+	let localPolyList = localStorage.getItem('polylist');
+
+	if (!localPolyList) {
+		localStorage.setItem('polylist', '[]');
+	}
+	
+	polyList = JSON.parse(localPolyList);
+
+	
 	const createTodo = (pId, pText, pDone) => ({
 		id: pId,
 		text: pText,
@@ -37,11 +36,14 @@
 
 		todoList.push(createTodo(lastId + 1, e.detail.value, false));
 		todoList = todoList;
+		localStorage.setItem('todolist', JSON.stringify(todoList));
 	}
 
 	const handleOnDelete = (id) => {
 		todoList = todoList.filter((val) => val.id != id);
+		localStorage.setItem('todolist', JSON.stringify(todoList));
 	};
+
 </script>
 
 <div class="row">
