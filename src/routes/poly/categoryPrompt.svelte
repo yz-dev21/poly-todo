@@ -2,11 +2,11 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-    // export let poly;
+	// export let poly;
 
 	let inputValue = '';
 
-	const handleOnSubmit = () => { // 이거 todoPrompt에서랑 함수이름 겹쳐도 문제 없는거지?
+	const handleOnSubmit = () => {
 		if (!inputValue) return;
 
 		dispatch('addCategory', {

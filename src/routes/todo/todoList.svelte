@@ -4,25 +4,25 @@
 
 	let todoList = [
 		{
-            id:1,
-            text:"DEBUG_TODO_1",
+			id: 1,
+			text: 'DEBUG_TODO_1',
 			done: true
-        },
-        {
-            id:2,
-            text:"DEBUG_TODO_2",
-			done: false
-        },
+		},
 		{
-            id:3,
-            text:"DEBUG_TODO_3",
+			id: 2,
+			text: 'DEBUG_TODO_2',
 			done: false
-        },
-        {
-            id:4,
-            text:"DEBUG_TODO_4",
+		},
+		{
+			id: 3,
+			text: 'DEBUG_TODO_3',
+			done: false
+		},
+		{
+			id: 4,
+			text: 'DEBUG_TODO_4',
 			done: true
-        }
+		}
 	];
 
 	const createTodo = (pId, pText, pDone) => ({
@@ -30,7 +30,7 @@
 		text: pText,
 		done: pDone
 	});
-	
+
 	function handleOnAdd(e) {
 		let lastId = 0;
 		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
@@ -44,11 +44,15 @@
 	};
 </script>
 
-
-<TodoPrompt on:add={(e) => handleOnAdd(e)} />
-
-<ul>
-	{#each todoList as todo}
-		<TodoItem {todo} on:delete={() => handleOnDelete(todo.id)} />
-	{/each}
-</ul>
+<div class="row">
+	<div class="col-md-5">
+		<TodoPrompt on:add={(e) => handleOnAdd(e)} />
+	</div>
+	<div class="col">
+		<ul>
+			{#each todoList as todo}
+				<TodoItem {todo} on:delete={() => handleOnDelete(todo.id)} />
+			{/each}
+		</ul>
+	</div>
+</div>

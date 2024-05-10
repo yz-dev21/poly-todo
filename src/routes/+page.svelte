@@ -1,6 +1,4 @@
 <script>
-	import { fade } from 'svelte/transition';
-
 	import Sidebar from './nav/sidebar.svelte';
 	import TodoList from './todo/todoList.svelte';
 	import PolyList from './poly/polyList.svelte';
@@ -16,9 +14,7 @@
 		</div>
 		<div class="col m-3">
 			{#if selectedIndex == 0}
-				<div>
-					<TodoList />
-				</div>
+				<TodoList />
 			{:else if selectedIndex == 1}
 				<div>
 					<PolyList />
@@ -38,6 +34,6 @@
 	}
 	.container-fluid {
 		width: 100vw;
-        height: 100vh;
+		height: 100vh;
 	}
 </style>

@@ -12,15 +12,34 @@
 		});
 
 		inputValue = '';
-	}
+	};
 </script>
 
-<form on:submit|preventDefault={handleOnSubmit}>
-	<div class="input-group mb-3">
-		<input type="text" class="form-control" placeholder="Add Todo" bind:value={inputValue} />
-		<button class="btn btn-outline-primary"><i class="bi bi-plus-lg"></i></button>
+<form on:submit|preventDefault|stopPropagation={handleOnSubmit}>
+	<div class="mb-3">
+		<input
+			type="text"
+			class="form-control"
+			placeholder="Add todo"
+			bind:value={inputValue}
+			on:keydown={(e) => e.key === 'Enter' && e.preventDefault()}
+		/>
 	</div>
+	<div class="mb-3">
+		<textarea class="form-control" placeholder="Add comments" rows="4"></textarea>
+	</div>
+	<button type="submit" class="btn btn-yellow" value="Submit"
+		><i class="bi bi-check-lg" id="bold_icon"></i></button
+	>
 </form>
 
 <style>
+	.btn-yellow,
+	.btn-yellow:focus {
+		background-color: #f9e2af;
+		border: none;
+	}
+	.btn-yellow:hover {
+		background-color: #e4d1a4;
+	}
 </style>
