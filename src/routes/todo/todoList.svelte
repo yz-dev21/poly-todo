@@ -1,5 +1,5 @@
 <script>
-	import TodoPrompt from './todoPrompt.svelte';
+	import AddPrompt from './addPrompt.svelte';
 	import TodoItem from './todoItem.svelte';
 
 	const createTodo = (pId, pText, pDone) => ({
@@ -10,50 +10,49 @@
 
 	let todoList = [];
 
+	// <TodoPrompt /> 의 UI 와 기능이 필요로 하는 데이터를 한 Object 에 담음.
 	let todoPromptData = {
-		header: '',
+		todo: {},
 		show: false,
 		isAdd: true
 	};
-	let targetTodo = {};
 
-	function handleOnSubmit(e) {
-		if (e.detail.isAdd) {
-			let lastId = 0;
-			if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
+	function handleOnAdd(e) {
+		let lastId = 0;
+		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
 
-			todoList.push(createTodo(lastId + 1, e.detail.text, e.detail.done));
-		}
+		todoList.push(createTodo(lastId + 1, e.detail.text, e.detail.done));
 
 		todoList = todoList;
 	}
-	const handleOnEdit = (todo) => {
-		handlePrompt(false);
-
+	const handleOnEditPrompt = (todo) => {
+		todoPromptData.show = true;
+		todoPromptData.isAdd = false;
 		todoPromptData.todo = todo;
 	};
-	function handlePrompt(isAdd) {
+	const handleOnAddPrompt = () => {
 		todoPromptData.show = true;
-		todoPromptData.isAdd = isAdd;
+		todoPromptData.isAdd = true;
 
-		if (todoPromptData.isAdd) todoPromptData.header = 'Add todo';
-		else todoPromptData.header = 'Edit todo';
-	}
+		console.log(todoList);
+	};
 </script>
 
 <div class="row">
 	<div class="col">
 		<ul class="list-group-flush">
 			{#each todoList as todo}
-				<TodoItem {todo} on:edit={() => handleOnEdit(todo)} />
+				<TodoItem bind:todo on:editPrompt={() => handleOnEditPrompt(todo)} />
 			{/each}
 
-			<button class="btn btn-primary" on:click={() => handlePrompt(true)}>
+			<button class="btn btn-primary" on:click={() => handleOnAddPrompt()}>
 				<i class="bi bi-plus-lg"></i> Add todo
 			</button>
 		</ul>
 	</div>
-	<div class="col-md-4">
-		<TodoPrompt {todoPromptData} {targetTodo} on:submit={(e) => handleOnSubmit(e)} />
+	<div class="col-md-5 h-100">
+		{#if todoPromptData.show && todoPromptData.isAdd}
+			<AddPrompt on:add={(e) => handleOnAdd(e)} />
+		{/if}
 	</div>
 </div>

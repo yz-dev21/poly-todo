@@ -29,11 +29,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-1 align-self-center">
+			<div class="col-sm-2 align-self-center text-end">
 				<button
 					class="btn btn-light btn-sm rounded-circle"
 					on:click={() => {
-						dispatch('edit');
+						dispatch('editPrompt');
 					}}><i class="bi bi-three-dots"></i></button
 				>
 			</div>
