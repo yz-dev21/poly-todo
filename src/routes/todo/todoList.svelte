@@ -1,5 +1,6 @@
 <script>
 	import AddPrompt from './addPrompt.svelte';
+	import EditPrompt from './editPrompt.svelte';
 	import TodoItem from './todoItem.svelte';
 
 	const createTodo = (pId, pText, pDone) => ({
@@ -36,23 +37,26 @@
 
 		console.log(todoList);
 	};
+	$: todoPromptData.todo, (todoList = todoList);
 </script>
 
 <div class="row">
 	<div class="col">
 		<ul class="list-group-flush">
+			<button class="btn btn-primary mb-3" on:click={() => handleOnAddPrompt()}>
+				<i class="bi bi-plus-lg"></i> Add todo
+			</button>
 			{#each todoList as todo}
 				<TodoItem bind:todo on:editPrompt={() => handleOnEditPrompt(todo)} />
 			{/each}
-
-			<button class="btn btn-primary" on:click={() => handleOnAddPrompt()}>
-				<i class="bi bi-plus-lg"></i> Add todo
-			</button>
 		</ul>
 	</div>
+	<!-- 이상하게 중첩 if 를 사용하면 애니메이션이 제대로 작동하지 않는 문제가 있어 이렇게 냅둠. -->
 	<div class="col-md-5 h-100">
 		{#if todoPromptData.show && todoPromptData.isAdd}
 			<AddPrompt on:add={(e) => handleOnAdd(e)} />
+		{:else if todoPromptData.show && !todoPromptData.isAdd}
+			<EditPrompt bind:todoPromptData />
 		{/if}
 	</div>
 </div>
