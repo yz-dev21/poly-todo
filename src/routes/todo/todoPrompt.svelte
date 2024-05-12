@@ -1,45 +1,40 @@
 <script>
+	import { slide } from 'svelte/transition';
+
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	let inputValue = '';
+	export let todoPromptData;
+	export let targetTodo;
+
+	let inputText = todoPromptData.text;
+	let inputDone = todoPromptData.done;
 
 	const handleOnSubmit = () => {
-		if (!inputValue) return;
+		if (!inputText) return;
 
-		dispatch('add', {
-			value: inputValue
+		dispatch('submit', {
+			text: inputText,
+			done: inputDone
 		});
-
-		inputValue = '';
 	};
 </script>
 
-<form on:submit|preventDefault|stopPropagation={handleOnSubmit}>
-	<div class="mb-3">
-		<input
-			type="text"
-			class="form-control"
-			placeholder="Add todo"
-			bind:value={inputValue}
-			on:keydown={(e) => e.key === 'Enter' && e.preventDefault()}
-		/>
-	</div>
-	<div class="mb-3">
-		<textarea class="form-control" placeholder="Add comments" rows="4"></textarea>
-	</div>
-	<button type="submit" class="btn btn-yellow" value="Submit"
-		><i class="bi bi-check-lg" id="bold_icon"></i></button
-	>
-</form>
+{#if todoPromptData.show == true}
+	<div transition:slide>
+		<h1 class="mb-2">{todoPromptData.header}</h1>
+		<form on:submit|preventDefault={handleOnSubmit}>
+			<div class="mb-3">
+				<input type="text" class="form-control" placeholder="Add todo..." bind:value={inputText} />
+			</div>
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="todo_check" bind:checked={inputDone} />
+				<label class="form-check-label" for="todo_check">Done</label>
+			</div>
 
-<style>
-	.btn-yellow,
-	.btn-yellow:focus {
-		background-color: #f9e2af;
-		border: none;
-	}
-	.btn-yellow:hover {
-		background-color: #e4d1a4;
-	}
-</style>
+			<button type="submit" class="btn btn-primary" value="Submit"
+				><i class="bi bi-check-lg" id="bold_icon"></i></button
+			>
+		</form>
+	</div>
+{/if}

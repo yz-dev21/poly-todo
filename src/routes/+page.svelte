@@ -16,13 +16,9 @@
 			{#if selectedIndex == 0}
 				<TodoList />
 			{:else if selectedIndex == 1}
-				<div>
-					<PolyList />
-				</div>
+				<PolyList />
 			{:else if selectedIndex == 2}
-				<div>
-					<Settings />
-				</div>
+				<Settings />
 			{/if}
 		</div>
 	</div>

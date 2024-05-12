@@ -10,7 +10,7 @@
 
 	let navs = [
 		createNav('bi bi-check2-square', 'Todo'),
-		createNav('bi bi-bounding-box', 'Poly'),
+		createNav('bi bi-bounding-box-circles', 'Poly'),
 		createNav('bi bi-gear-wide-connected', 'Settings')
 	];
 </script>
@@ -28,7 +28,7 @@
 				<NavItem
 					icon={nav.icon}
 					text={nav.text}
-					toggle={selectedIndex == index ? true : false}
+					toggle={selectedIndex == index}
 					on:select={() => (selectedIndex = index)}
 				/>
 			</li>
