@@ -1,11 +1,28 @@
 <script>
+	import Modal from '../modal.svelte';
+	import TodoPrompt from './todoPrompt.svelte';
+
 	import { slide } from 'svelte/transition';
 
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
 	export let todo;
+
+	let closeBtn;
+	const editPromptModalId = 'editPromptModal';
+
+	const handleOnEdit = (e) => {
+		closeBtn.click();
+
+		todo = { ...e.detail.value };
+		dispatch('change');
+	};
 </script>
+
+<Modal bind:closeBtn id={editPromptModalId} label={'editPromptLabel'} headerText="Edit a todo">
+	<TodoPrompt {todo} on:submit={(e) => handleOnEdit(e)} />
+</Modal>
 
 <li
 	transition:slide={{ duration: 250 }}
@@ -20,10 +37,10 @@
 							type="checkbox"
 							id="todo_check"
 							class="form-check-input me-3"
-							name={todo.text}
+							name={todo.id}
 							bind:checked={todo.done}
 							on:change={() => {
-								dispatch('check');
+								dispatch('change');
 							}}
 						/>
 						<label class="form-check-label" id={todo.done ? 'strikethrough' : ''} for="todo_check"
@@ -35,11 +52,8 @@
 			<div class="col-sm-2 align-self-center text-end">
 				<button
 					class="btn btn-light btn-sm rounded-circle"
-					on:click={() => {
-						dispatch('click');
-					}}
 					data-bs-toggle="modal"
-					data-bs-target="#todoPromptModal"><i class="bi bi-three-dots"></i></button
+					data-bs-target="#{editPromptModalId}"><i class="bi bi-three-dots"></i></button
 				>
 			</div>
 		</div>
@@ -47,6 +61,12 @@
 </li>
 
 <style>
+	.btn-light,
+	.btn-light:hover {
+		background-color: transparent;
+		outline: none;
+		border: none;
+	}
 	#strikethrough {
 		text-decoration: line-through;
 	}

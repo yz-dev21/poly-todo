@@ -1,50 +1,52 @@
 <script>
 	import TodoItem from './todoItem.svelte';
 	import TodoPrompt from './todoPrompt.svelte';
-	import * as data from './data.js';
-	import Modal from 'sv-bootstrap-modal';
+	import Modal from '../modal.svelte';
+	import * as ls from './ls.js';
 
-	let todoList = data.getTodoList();
-	let polyList = data.getPolyList();
+	let closeBtn;
+	const addPromptModalId = 'addPromptModal';
 
-	let isOpen = false;
+	let todoList = ls.getTodoList();
+	let polyList = ls.getPolyList();
 
 	function handleOnAdd(e) {
-		isOpen = false;
+		closeBtn.click();
 
 		let lastId = 0;
 		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
 
-		let newTodo = e.detail.value;
-		newTodo.id = lastId + 1;
-
-		todoList.push(newTodo);
+		todoList.push({
+			id: lastId + 1,
+			text: e.detail.value.text,
+			done: e.detail.value.done
+		});
 
 		todoList = todoList;
-		data.setTodoList(todoList);
+		ls.setTodoList(todoList);
 	}
+	const handleOnChange = () => {
+		ls.setTodoList(todoList);
+	};
 </script>
 
-<Modal backdrop={false} bind:open={isOpen}>
-	<div class="modal-header">
-		<h5 class="modal-title">Add a new todo</h5>
-		<button type="button" class="btn-close" on:click={() => (isOpen = false)}> </button>
-	</div>
+<Modal bind:closeBtn id={addPromptModalId} label={'addPromptLabel'} headerText={'Add a new todo'}>
 	<TodoPrompt on:submit={(e) => handleOnAdd(e)} />
 </Modal>
 
 <div class="row">
 	<div class="col">
 		<ul class="list-group-flush">
-			<button class="btn btn-primary mb-3" on:click={() => (isOpen = true)}>
+			<button
+				class="btn btn-primary mb-3"
+				data-bs-toggle="modal"
+				data-bs-target="#{addPromptModalId}"
+			>
 				<i class="bi bi-plus-lg"></i> Add todo
 			</button>
 			{#each todoList as todo}
-				<TodoItem bind:todo />
+				<TodoItem bind:todo on:change={() => handleOnChange()} />
 			{/each}
 		</ul>
 	</div>
 </div>
-
-<style>
-</style>
