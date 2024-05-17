@@ -1,88 +1,50 @@
 <script>
-	import AddPrompt from './addPrompt.svelte';
-	import EditPrompt from './editPrompt.svelte';
 	import TodoItem from './todoItem.svelte';
+	import TodoPrompt from './todoPrompt.svelte';
+	import * as data from './data.js';
+	import Modal from 'sv-bootstrap-modal';
 
+	let todoList = data.getTodoList();
+	let polyList = data.getPolyList();
 
-	/* GET TODOLIST */
-	let todoList = [];
-	let localTodoList = localStorage.getItem('todolist');
-
-	if (!localTodoList) {
-		localStorage.setItem('todolist', '[]');
-	} else {
-		todoList = JSON.parse(localTodoList);
-	}
-	
-
-	/* GET POLYLIST */
-	let polyList = [];
-	let localPolyList = localStorage.getItem('polylist');
-
-	if (!localPolyList) {
-		localStorage.setItem('polylist', '[]');
-	}
-	
-	polyList = JSON.parse(localPolyList);
-
-	
-	const createTodo = (pId, pText, pDone) => ({
-		id: pId,
-		text: pText,
-		done: pDone
-	});
-
-	
-
-	// <TodoPrompt /> 의 UI 와 기능이 필요로 하는 데이터를 한 Object 에 담음.
-	let todoPromptData = {
-		todo: {},
-		show: false,
-		isAdd: true
-	};
+	let isOpen = false;
 
 	function handleOnAdd(e) {
+		isOpen = false;
+
 		let lastId = 0;
 		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
 
-		todoList.push(createTodo(lastId + 1, e.detail.text, e.detail.done));
+		let newTodo = e.detail.value;
+		newTodo.id = lastId + 1;
+
+		todoList.push(newTodo);
 
 		todoList = todoList;
-		localStorage.setItem('todolist', JSON.stringify(todoList));
+		data.setTodoList(todoList);
 	}
-
-	const handleOnEditPrompt = (todo) => {
-		todoPromptData.show = true;
-		todoPromptData.isAdd = false;
-		todoPromptData.todo = todo;
-	};
-	const handleOnAddPrompt = () => {
-		todoPromptData.show = true;
-		todoPromptData.isAdd = true;
-
-		console.log(todoList);
-	};
-	$: todoPromptData.todo, (todoList = todoList);
-
 </script>
+
+<Modal backdrop={false} bind:open={isOpen}>
+	<div class="modal-header">
+		<h5 class="modal-title">Add a new todo</h5>
+		<button type="button" class="btn-close" on:click={() => (isOpen = false)}> </button>
+	</div>
+	<TodoPrompt on:submit={(e) => handleOnAdd(e)} />
+</Modal>
 
 <div class="row">
 	<div class="col">
 		<ul class="list-group-flush">
-			<button class="btn btn-primary mb-3" on:click={() => handleOnAddPrompt()}>
+			<button class="btn btn-primary mb-3" on:click={() => (isOpen = true)}>
 				<i class="bi bi-plus-lg"></i> Add todo
 			</button>
 			{#each todoList as todo}
-				<TodoItem bind:todo on:editPrompt={() => handleOnEditPrompt(todo)} />
+				<TodoItem bind:todo />
 			{/each}
 		</ul>
 	</div>
-	<!-- 이상하게 중첩 if 를 사용하면 애니메이션이 제대로 작동하지 않는 문제가 있어 이렇게 냅둠. -->
-	<div class="col-md-5 h-100">
-		{#if todoPromptData.show && todoPromptData.isAdd}
-			<AddPrompt on:add={(e) => handleOnAdd(e)} />
-		{:else if todoPromptData.show && !todoPromptData.isAdd}
-			<EditPrompt bind:todoPromptData />
-		{/if}
-	</div>
 </div>
+
+<style>
+</style>

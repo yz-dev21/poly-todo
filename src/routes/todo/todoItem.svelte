@@ -22,6 +22,9 @@
 							class="form-check-input me-3"
 							name={todo.text}
 							bind:checked={todo.done}
+							on:change={() => {
+								dispatch('check');
+							}}
 						/>
 						<label class="form-check-label" id={todo.done ? 'strikethrough' : ''} for="todo_check"
 							>{todo.text}</label
@@ -33,8 +36,10 @@
 				<button
 					class="btn btn-light btn-sm rounded-circle"
 					on:click={() => {
-						dispatch('editPrompt');
-					}}><i class="bi bi-three-dots"></i></button
+						dispatch('click');
+					}}
+					data-bs-toggle="modal"
+					data-bs-target="#todoPromptModal"><i class="bi bi-three-dots"></i></button
 				>
 			</div>
 		</div>
