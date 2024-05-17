@@ -3,13 +3,36 @@
 	import EditPrompt from './editPrompt.svelte';
 	import TodoItem from './todoItem.svelte';
 
+
+	/* GET TODOLIST */
+	let todoList = [];
+	let localTodoList = localStorage.getItem('todolist');
+
+	if (!localTodoList) {
+		localStorage.setItem('todolist', '[]');
+	} else {
+		todoList = JSON.parse(localTodoList);
+	}
+	
+
+	/* GET POLYLIST */
+	let polyList = [];
+	let localPolyList = localStorage.getItem('polylist');
+
+	if (!localPolyList) {
+		localStorage.setItem('polylist', '[]');
+	}
+	
+	polyList = JSON.parse(localPolyList);
+
+	
 	const createTodo = (pId, pText, pDone) => ({
 		id: pId,
 		text: pText,
 		done: pDone
 	});
 
-	let todoList = [];
+	
 
 	// <TodoPrompt /> 의 UI 와 기능이 필요로 하는 데이터를 한 Object 에 담음.
 	let todoPromptData = {
@@ -25,7 +48,9 @@
 		todoList.push(createTodo(lastId + 1, e.detail.text, e.detail.done));
 
 		todoList = todoList;
+		localStorage.setItem('todolist', JSON.stringify(todoList));
 	}
+
 	const handleOnEditPrompt = (todo) => {
 		todoPromptData.show = true;
 		todoPromptData.isAdd = false;
@@ -38,6 +63,7 @@
 		console.log(todoList);
 	};
 	$: todoPromptData.todo, (todoList = todoList);
+
 </script>
 
 <div class="row">
