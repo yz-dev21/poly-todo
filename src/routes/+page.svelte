@@ -9,7 +9,7 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-2" id="sidebar">
+		<div class="col-sm-auto" id="sidebar">
 			<Sidebar bind:selectedIndex />
 		</div>
 		<div class="col m-3">

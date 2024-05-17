@@ -3,31 +3,23 @@
 
 	export let selectedIndex = 0;
 
-	const createNav = (pIcon, pText) => ({
-		icon: pIcon,
-		text: pText
-	});
-
 	let navs = [
-		createNav('bi bi-check2-square', 'Todo'),
-		createNav('bi bi-bounding-box-circles', 'Poly'),
-		createNav('bi bi-gear-wide-connected', 'Settings')
+		'bi bi-check2-square', 'bi bi-bounding-box-circles','bi bi-gear-wide-connected'
 	];
 </script>
 
-<div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top py-3 pe-3 border-end vh-100">
-	<a
-		href="https://github.com/yz-dev21/poly-todo"
-		class="align-items-center link-dark text-decoration-none ps-3"
-		><i class="bi bi-github h4"></i><span class="m-2 h4"><strong>POLY-TODO</strong></span>
-	</a>
-	<hr />
+<div id='6974' class="d-flex flex-sm-column flex-row flex-nowrap sticky-top py-3 pe-3 border-end vh-100 vw-5">
 	<ul class="nav nav-pills nav-fill flex-column mb-auto">
-		{#each navs as nav, index}
+		<li class="nav-item"><a
+			href="https://github.com/yz-dev21/poly-todo"
+			class="link-dark text-decoration-none"
+			><i class="bi bi-github h4"></i>
+		</a></li>
+		<hr />
+			{#each navs as nav, index}
 			<li class="nav-item mb-3">
 				<NavItem
-					icon={nav.icon}
-					text={nav.text}
+					icon={nav}
 					toggle={selectedIndex == index}
 					on:select={() => (selectedIndex = index)}
 				/>
