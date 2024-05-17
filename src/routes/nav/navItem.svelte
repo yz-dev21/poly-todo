@@ -8,18 +8,19 @@
 </script>
 
 <button
-	class="nav-link btn nav-yellow link-dark text-start {toggle ? 'selected' : ''}"
+	class="nav-link btn btn-primary link-dark text-start {toggle ? 'selected' : ''}"
 	on:click={() => dispatch('select')}
 	><i class={icon} id="bold_icon"></i>
 	<span class="m-2"><strong>{text}</strong></span>
 </button>
 
 <style>
-	.nav-yellow:focus {
-		background-color: #f9e2af;
+	.btn-primary:hover {
+		color: white !important;
 	}
 	.selected {
-		background-color: #f9e2af;
+		color: white !important;
+		background-color: #106cfc;
 		outline: none;
 	}
 	:global(#bold_icon) {

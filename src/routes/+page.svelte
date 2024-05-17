@@ -9,20 +9,16 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-2">
+		<div class="col-sm-2" id="sidebar">
 			<Sidebar bind:selectedIndex />
 		</div>
 		<div class="col m-3">
 			{#if selectedIndex == 0}
 				<TodoList />
 			{:else if selectedIndex == 1}
-				<div>
-					<PolyList />
-				</div>
+				<PolyList />
 			{:else if selectedIndex == 2}
-				<div>
-					<Settings />
-				</div>
+				<Settings />
 			{/if}
 		</div>
 	</div>

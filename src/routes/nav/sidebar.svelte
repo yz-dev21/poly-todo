@@ -10,7 +10,7 @@
 
 	let navs = [
 		createNav('bi bi-check2-square', 'Todo'),
-		createNav('bi bi-bounding-box', 'Poly'),
+		createNav('bi bi-bounding-box-circles', 'Poly'),
 		createNav('bi bi-gear-wide-connected', 'Settings')
 	];
 </script>
@@ -24,14 +24,20 @@
 	<hr />
 	<ul class="nav nav-pills nav-fill flex-column mb-auto">
 		{#each navs as nav, index}
-			<li class="nav-item mb-2">
+			<li class="nav-item mb-3">
 				<NavItem
 					icon={nav.icon}
 					text={nav.text}
-					toggle={selectedIndex == index ? true : false}
+					toggle={selectedIndex == index}
 					on:select={() => (selectedIndex = index)}
 				/>
 			</li>
 		{/each}
 	</ul>
 </div>
+
+<style>
+	div {
+		padding-left: 0;
+	}
+</style>
