@@ -2,14 +2,12 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	// export let poly;
-
 	let inputValue = '';
 
 	const handleOnSubmit = () => {
 		if (!inputValue) return;
 
-		dispatch('addCategory', {
+		dispatch('add', {
 			value: inputValue
 		});
 

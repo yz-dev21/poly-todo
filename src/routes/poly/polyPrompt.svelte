@@ -7,7 +7,7 @@
 	const handleOnSubmit = () => {
 		if (!inputValue) return;
 
-		dispatch('add', {
+		dispatch('submit', {
 			value: inputValue
 		});
 
@@ -16,9 +16,15 @@
 </script>
 
 <form on:submit|preventDefault={handleOnSubmit}>
-	<div class="input-group mb-3">
-		<input type="text" class="form-control" placeholder="Add Poly" bind:value={inputValue} />
-		<button class="btn btn-outline-primary"><i class="bi bi-plus-lg"></i></button>
+	<div class="modal-body">
+		<div class="mb-3">
+			<input type="text" class="form-control" placeholder="Text" bind:value={inputValue} />
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary" value="Submit"
+			><i class="bi bi-check-lg" id="bold_icon"></i></button
+		>
 	</div>
 </form>
 

@@ -9,6 +9,7 @@
 
 	let todoList = ls.getTodoList();
 	let polyList = ls.getPolyList();
+	let categoryList = ls.getCategoryList();
 
 	function handleOnAdd(e) {
 		closeBtn.click();

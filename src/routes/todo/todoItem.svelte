@@ -18,6 +18,7 @@
 		todo = { ...e.detail.value };
 		dispatch('change');
 	};
+	
 </script>
 
 <Modal bind:closeBtn id={editPromptModalId} label={'editPromptLabel'} headerText="Edit a todo">
