@@ -23,12 +23,12 @@
 		categoryList.push(createCategory(lastId + 1, e.detail.value));
 		poly.category.push(lastId + 1);
 		categoryList = categoryList;
-		localStorage.setItem('categorylist', JSON.stringify(categoryList));
+		setCategoryList(categoryList);
 	}
 
 	const handleOnDeleteCategory = (id) => {
 		categoryList = categoryList.filter((val) => val.id != id);
-		localStorage.setItem('categorylist', JSON.stringify(categoryList));
+		setCategoryList(categoryList);
 	};
 
 </script>

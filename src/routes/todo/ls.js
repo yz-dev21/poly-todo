@@ -22,6 +22,26 @@ export function getPolyList() {
     }
 }
 
+export function getCategoryList() {
+    let localCategoryList = localStorage.getItem('categoryList');
+
+    if (!localCategoryList) {
+        localStorage.setItem('categoryList', '[]');
+        return [];
+    }
+    else {
+        return JSON.parse(localCategoryList);
+    }
+}
+
 export function setTodoList(todoList) {
     localStorage.setItem('todoList', JSON.stringify(todoList));
+}
+
+export function setPolyList(polyList) {
+    localStorage.setItem('polyList', JSON.stringify(polyList));
+}
+
+export function setCategoryList(categoryList) {
+    localStorage.setItem('categoryList', JSON.stringify(categoryList));
 }
