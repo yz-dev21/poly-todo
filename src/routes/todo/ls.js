@@ -9,6 +9,7 @@ export function getTodoList() {
         return JSON.parse(localTodoList);
     }
 }
+
 export function getPolyList() {
     let localPolyList = localStorage.getItem('polyList');
 
@@ -20,6 +21,7 @@ export function getPolyList() {
         return JSON.parse(localPolyList);
     }
 }
+
 export function setTodoList(todoList) {
     localStorage.setItem('todoList', JSON.stringify(todoList));
 }
