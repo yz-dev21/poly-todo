@@ -4,7 +4,7 @@
 	export let selectedIndex = 0;
 
 	let navs = [
-		'bi bi-check2-square', 'bi bi-bounding-box-circles','bi bi-gear-wide-connected'
+		'fs-4 bi bi-check2-square', 'fs-4 bi bi-bounding-box-circles','fs-4 bi bi-gear-wide-connected'
 	];
 </script>
 
@@ -13,7 +13,7 @@
 		<li class="nav-item"><a
 			href="https://github.com/yz-dev21/poly-todo"
 			class="link-dark text-decoration-none"
-			><i class="bi bi-github h4"></i>
+			><i class="fs-3 bi bi-github h4"></i>
 		</a></li>
 		<hr />
 			{#each navs as nav, index}
