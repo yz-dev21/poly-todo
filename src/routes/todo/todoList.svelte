@@ -1,19 +1,15 @@
 <script>
 	import TodoItem from './todoItem.svelte';
-	import TodoPrompt from './todoPrompt.svelte';
-	import Modal from '../modal.svelte';
-	import * as ls from './ls.js';
+	import TodoModal from './todoModal.svelte';
+	import * as ls from '../../ls.js';
 
-	let closeBtn;
-	const addPromptModalId = 'addPromptModal';
+	const addTodoModalId = 'addTodoModal';
 
 	let todoList = ls.getTodoList();
 	let polyList = ls.getPolyList();
 	let categoryList = ls.getCategoryList();
 
 	function handleOnAdd(e) {
-		closeBtn.click();
-
 		let lastId = 0;
 		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
 
@@ -26,14 +22,12 @@
 		todoList = todoList;
 		ls.setTodoList(todoList);
 	}
-	const handleOnChange = () => {
+	const handleOnChange = (e) => {
 		ls.setTodoList(todoList);
 	};
 </script>
 
-<Modal bind:closeBtn id={addPromptModalId} label={'addPromptLabel'} headerText={'Add a new todo'}>
-	<TodoPrompt on:submit={(e) => handleOnAdd(e)} />
-</Modal>
+<TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
 
 <div class="row">
 	<div class="col">
@@ -41,12 +35,12 @@
 			<button
 				class="btn btn-primary mb-3"
 				data-bs-toggle="modal"
-				data-bs-target="#{addPromptModalId}"
+				data-bs-target="#{addTodoModalId}"
 			>
 				<i class="bi bi-plus-lg"></i> Add todo
 			</button>
 			{#each todoList as todo}
-				<TodoItem bind:todo on:change={() => handleOnChange()} />
+				<TodoItem bind:todo on:change={(e) => handleOnChange(e)} />
 			{/each}
 		</ul>
 	</div>

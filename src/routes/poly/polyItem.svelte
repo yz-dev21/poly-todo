@@ -1,5 +1,5 @@
 <script>
-	import * as ls from '../todo/ls';
+	import * as ls from '../../ls.js';
 
 	let todoList = ls.getTodoList();
 	let polyList = ls.getPolyList();
@@ -11,12 +11,11 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	import CategoryPrompt from './categoryPrompt.svelte';
+	import CategoryPrompt from './categoryForm.svelte';
 	import CategoryItem from './categoryItem.svelte';
 
 	export let poly;
-	
-	let closeBtn;
+
 	const editPromptModalId = 'editPromptModal';
 
 	const createCategory = (pId, pName) => ({
@@ -39,10 +38,12 @@
 		categoryList = categoryList.filter((val) => val.id != id);
 		ls.setCategoryList(categoryList);
 	};
-
 </script>
 
-<li class="list-group-item border-0 d-flex align-items-center ps-0 mb-3 text-start" transition:slide={{ duration: 250 }}>
+<li
+	class="list-group-item border-0 d-flex align-items-center ps-0 mb-3 text-start"
+	transition:slide={{ duration: 250 }}
+>
 	<div class="card w-75">
 		<div class="row">
 			<div class="col">
@@ -57,22 +58,19 @@
 							{/each}
 						</ul>
 						<CategoryPrompt
-						{poly}
-						on:add={(e) => {
-							console.log(categoryList);
-							console.log("비동기처리...???????????");
-							handleOnAdd(e);
-						}}
+							{poly}
+							on:add={(e) => {
+								console.log(categoryList);
+								console.log('비동기처리...???????????');
+								handleOnAdd(e);
+							}}
 						/>
-						
 					</div>
 				</div>
 			</div>
 			<!-- delete는 나중에 edit으로 합쳐야함! -->
 			<div class="col-sm-2 align-self-center text-end">
 				<button class="btn-close shadow-none" on:click={() => dispatch('delete')}></button>
-			</div>
-			<div class="col-sm-2 align-self-center text-end">
 				<button
 					class="btn btn-light btn-sm rounded-circle"
 					data-bs-toggle="modal"

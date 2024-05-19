@@ -2,6 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
+	export let focusField;
 	export let todo = {
 		id: 0,
 		text: '',
@@ -23,11 +24,23 @@
 <form on:submit|preventDefault={handleOnSubmit}>
 	<div class="modal-body">
 		<div class="mb-3">
-			<input type="text" class="form-control" placeholder="Text" bind:value={todo.text} />
+			<input
+				type="text"
+				class="form-control"
+				placeholder="Text"
+				bind:value={todo.text}
+				bind:this={focusField}
+				spellcheck="false"
+			/>
 		</div>
 		<div class="form-check mb-3">
-			<input type="checkbox" class="form-check-input" id="todo_check" bind:checked={todo.done} />
-			<label class="form-check-label" for="todo_check">Done</label>
+			<input
+				type="checkbox"
+				class="form-check-input"
+				id="todo_form_check{todo.id}"
+				bind:checked={todo.done}
+			/>
+			<label class="form-check-label" for="todo_form_check{todo.id}">Done</label>
 		</div>
 	</div>
 	<div class="modal-footer">

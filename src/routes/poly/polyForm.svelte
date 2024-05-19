@@ -27,6 +27,3 @@
 		>
 	</div>
 </form>
-
-<style>
-</style>
