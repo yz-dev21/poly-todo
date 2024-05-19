@@ -9,8 +9,11 @@
 		done: false
 	};
 
+	let isDelete = false;
+
 	const handleOnSubmit = () => {
 		if (!todo.text) return;
+		if (isDelete) todo.id = -1;
 
 		dispatch('submit', {
 			value: todo
@@ -44,7 +47,17 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" class="btn btn-primary" value="Submit"
+		{#if todo.id > 0}
+			<button
+				type="submit"
+				class="btn btn-outline-primary"
+				on:click={() => {
+					isDelete = true;
+				}}
+				value="delete"><i class="bi bi-trash"></i></button
+			>
+		{/if}
+		<button type="submit" class="btn btn-primary" value="submit"
 			><i class="bi bi-check-lg" id="bold_icon"></i></button
 		>
 	</div>

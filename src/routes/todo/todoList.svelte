@@ -22,7 +22,10 @@
 		todoList = todoList;
 		ls.setTodoList(todoList);
 	}
-	const handleOnChange = (e) => {
+	const handleOnChange = (id) => {
+		if (id == -1) {
+			todoList = todoList.filter((t) => t.id != -1);
+		}
 		ls.setTodoList(todoList);
 	};
 </script>
@@ -40,7 +43,7 @@
 				<i class="bi bi-plus-lg"></i> Add todo
 			</button>
 			{#each todoList as todo}
-				<TodoItem bind:todo on:change={(e) => handleOnChange(e)} />
+				<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
 			{/each}
 		</ul>
 	</div>
