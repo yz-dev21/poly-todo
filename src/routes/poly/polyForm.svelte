@@ -2,6 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
+	export let focusField;
 	let inputValue = '';
 
 	const handleOnSubmit = () => {
@@ -18,7 +19,13 @@
 <form on:submit|preventDefault={handleOnSubmit}>
 	<div class="modal-body">
 		<div class="mb-3">
-			<input type="text" class="form-control" placeholder="Text" bind:value={inputValue} />
+			<input
+				type="text"
+				class="form-control"
+				placeholder="Text"
+				bind:value={inputValue}
+				bind:this={focusField}
+			/>
 		</div>
 	</div>
 	<div class="modal-footer">

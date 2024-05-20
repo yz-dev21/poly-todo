@@ -1,15 +1,11 @@
 <script>
-	import PolyForm from './polyForm.svelte';
+	import PolyModal from './polyModal.svelte';
 	import PolyItem from './polyItem.svelte';
-	import Modal from '../modal.svelte';
 	import * as ls from '../../ls';
 
-	let todoList = ls.getTodoList();
 	let polyList = ls.getPolyList();
-	let categoryList = ls.getCategoryList();
 
-	let closeBtn;
-	const addPromptModalId = 'addPromptModal';
+	const addPolyModalId = 'addPolyModal';
 
 	const createPoly = (pId, pName) => ({
 		id: pId,
@@ -18,7 +14,6 @@
 	});
 
 	function handleOnAdd(e) {
-		closeBtn.click();
 		let lastId = 0;
 		if (polyList.length > 0) lastId = polyList[polyList.length - 1].id;
 
@@ -34,9 +29,7 @@
 	};
 </script>
 
-<Modal bind:closeBtn id={addPromptModalId} title="Add a new Poly">
-	<PolyForm on:submit={(e) => handleOnAdd(e)} />
-</Modal>
+<PolyModal id={addPolyModalId} title="Add a new poly" on:submit={(e) => handleOnAdd(e)} />
 
 <div class="row">
 	<div class="col">
@@ -44,7 +37,7 @@
 			<button
 				class="btn btn-primary mb-3"
 				data-bs-toggle="modal"
-				data-bs-target="#{addPromptModalId}"
+				data-bs-target="#{addPolyModalId}"
 			>
 				<i class="bi bi-plus-lg"></i> Add Poly
 			</button>

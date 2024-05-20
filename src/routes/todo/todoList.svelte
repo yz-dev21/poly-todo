@@ -6,8 +6,6 @@
 	const addTodoModalId = 'addTodoModal';
 
 	let todoList = ls.getTodoList();
-	let polyList = ls.getPolyList();
-	let categoryList = ls.getCategoryList();
 
 	function handleOnAdd(e) {
 		let lastId = 0;
@@ -24,7 +22,7 @@
 	}
 	const handleOnChange = (id) => {
 		if (id == -1) {
-			todoList = todoList.filter((t) => t.id != -1);
+			todoList = todoList.filter((t) => t.id != id);
 		}
 		ls.setTodoList(todoList);
 	};
