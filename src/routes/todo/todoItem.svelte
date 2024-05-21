@@ -22,7 +22,7 @@
 	transition:slide={{ duration: 250 }}
 	class="list-group-item border-0 d-flex align-items-center ps-0 mb-3 text-start"
 >
-	<div class="card w-75">
+	<div class="card w-100">
 		<div class="row">
 			<div class="col">
 				<div class="card-body">
