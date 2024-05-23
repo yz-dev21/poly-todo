@@ -35,18 +35,22 @@
 			<div class="card">
 				<div class="card-header">
 					<h3 class="card-title">TITLE</h3>
-					<button
-						class="btn btn-primary mb-3"
-						data-bs-toggle="modal"
-						data-bs-target="#{addTodoModalId}"
-					>
-						<i class="bi bi-plus-lg"></i> Add todo
-					</button>
 				</div>
 				<div class="card-body">
-					{#each todoList as todo}
-						<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
-					{/each}
+					<ul class="list-group-flush p-0">
+						{#each todoList as todo}
+							<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
+						{/each}
+						<li class="list-group-item border-0 d-flex align-items-center ps-0 mb-3 text-start">
+							<button
+								class="btn btn-primary w-100"
+								data-bs-toggle="modal"
+								data-bs-target="#{addTodoModalId}"
+							>
+								<i class="bi bi-plus-lg"></i> Add a new todo
+							</button>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
