@@ -8,7 +8,7 @@
 	];
 </script>
 
-<div id='6974' class="d-flex flex-sm-column flex-row flex-nowrap sticky-top py-3 pe-3 border-end vh-100 vw-5">
+<div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top pt-3 pe-3 border-end vh-100 vw-5">
 	<ul class="nav nav-pills nav-fill flex-column mb-auto">
 		<li class="nav-item"><a
 			href="https://github.com/yz-dev21/poly-todo"

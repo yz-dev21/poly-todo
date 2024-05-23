@@ -29,7 +29,7 @@
 </script>
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
-<div class="row d-flex overflow-x-auto flex-nowrap py-3">
+<div class="row d-flex overflow-x-auto flex-nowrap pt-3 h-100">
 	{#each { length: 10 } as _}
 		<div class="col-sm-6 col-md-4 col-xl-3">
 			<div class="card">

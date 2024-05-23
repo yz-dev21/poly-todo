@@ -12,7 +12,7 @@
 		<div class="col-sm-auto" id="sidebar">
 			<Sidebar bind:selectedIndex />
 		</div>
-		<div class="col m-3">
+		<div class="col mt-3">
 			{#if selectedIndex == 0}
 				<TodoList />
 			{:else if selectedIndex == 1}
