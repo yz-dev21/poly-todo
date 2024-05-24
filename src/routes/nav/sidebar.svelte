@@ -13,6 +13,7 @@
 		<li class="nav-item"><a
 			href="https://github.com/yz-dev21/poly-todo"
 			class="link-dark text-decoration-none"
+			target="_blank"
 			><i class="fs-3 bi bi-github h4"></i>
 		</a></li>
 		<hr />

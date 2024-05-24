@@ -1,2 +1,39 @@
 <a href="https://www.flaticon.com/free-icons/to-do-list" title="to do list icons">To do list icons created by Graphics Plazza - Flaticon</a>
  ------>> 푸터 넣고 넣어야함... 원래는
+
+ todoList = [
+    {
+        id: any,
+        text: any,
+        done: any,
+        category: any[]
+    }, ...
+ ]
+
+ polyList = [
+    {
+        id: any,
+        name: any,
+        category: any[]
+    }, ...
+ ]
+
+ categoryList = [
+    (
+        id: any,
+        name: any,
+        poly: any, // 이 카테고리가 속한 poly의 id
+        item: any[]
+    ), ...
+ ]
+
+
+todoList.svelte에서의 로직
+    -> todo를 localStorage에서 불러옴
+    -> 유저가 특정 poly를 선택
+    -> 선택된 poly 아래의 category들을 불러옴
+    -> category 당 하나의 card, 각각의 card에서 todoList에서 forEach 돌리며 각 todo의 category[]에 해당 category가 있는지 확인
+
+polyList.svelte에서의 로직
+    -> poly를 localStorage에서 불러와서 다 띄움
+    -> 각 poly에 category가 속하는지 확인후 띄움

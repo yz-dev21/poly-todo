@@ -14,7 +14,8 @@
 		todoList.push({
 			id: lastId + 1,
 			text: e.detail.value.text,
-			done: e.detail.value.done
+			done: e.detail.value.done,
+			category: []
 		});
 
 		todoList = todoList;

@@ -3,28 +3,29 @@
 
 	let todoList = ls.getTodoList();
 	let polyList = ls.getPolyList();
-	// let categoryList = ls.getCategoryList();
-	let categoryList = [];
-
+	let categoryList = ls.getCategoryList();
+	
 	import { slide } from 'svelte/transition';
-
+	
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
-
+	
 	import CategoryPrompt from './categoryForm.svelte';
 	import CategoryItem from './categoryItem.svelte';
-
+	
 	export let poly;
-
+	
 	const editPromptModalId = 'editPromptModal';
-
+	
 	const createCategory = (pId, pName) => ({
 		id: pId,
 		name: pName,
-		item: []
+		poly: poly.id
+		// item: [] // is this needed?
 	});
 
 	function handleOnAdd(e) {
+		categoryList = ls.getCategoryList();
 		let lastId = 0;
 		if (categoryList.length > 0) lastId = categoryList[categoryList.length - 1].id;
 
@@ -52,7 +53,7 @@
 						<span>{poly.name}</span>
 						<ul>
 							{#each categoryList as category}
-								{#if poly.category.includes(category.id)}
+								{#if category.poly == poly.id}
 									<CategoryItem {category} />
 								{/if}
 							{/each}
@@ -60,8 +61,6 @@
 						<CategoryPrompt
 							{poly}
 							on:add={(e) => {
-								console.log(categoryList);
-								console.log('비동기처리...???????????');
 								handleOnAdd(e);
 							}}
 						/>

@@ -7,7 +7,7 @@
 
 	const addPolyModalId = 'addPolyModal';
 
-	const createPoly = (pId, pName) => ({
+	const createPoly = (pId, pName) => ({ // 걍 이거 handleOnAdd()에 넣어버릴까?
 		id: pId,
 		name: pName,
 		category: []
