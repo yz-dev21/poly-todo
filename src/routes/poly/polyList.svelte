@@ -29,7 +29,6 @@
 	}
 
 	const handleOnDelete = (id) => {
-		console.log('Delete Poly');
 		polyList = polyList.filter((val) => val.id != id);
 		ls.setPolyList(polyList);
 	};
@@ -47,8 +46,8 @@
 			>
 				<i class="bi bi-plus-lg"></i> Add Poly
 			</button>
-			{#each polyList as poly}
-				<PolyItem {poly} on:delete={() => handleOnDelete(poly.id)} />
+			{#each polyList as poly, index}
+				<PolyItem {poly} {index} on:delete={() => handleOnDelete(poly.id)} />
 			{/each}
 		</ul>
 	</div>

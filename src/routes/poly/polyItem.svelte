@@ -14,6 +14,7 @@
 	import CategoryItem from './categoryItem.svelte';
 	
 	export let poly;
+	export let index;
 	
 	const editPromptModalId = 'editPromptModal';
 	
@@ -32,21 +33,22 @@
 		if (categoryList.length > 0) lastId = categoryList[categoryList.length - 1].id;
 		
 		categoryList.push(createCategory(lastId + 1, e.detail.value));
-		poly.category.push(lastId + 1);
-
+		polyList[index].category.push(lastId + 1);
 		categoryList = categoryList;
+		ls.setPolyList(polyList);
 		ls.setCategoryList(categoryList);
 	}
 	
 	if(poly.category.length == 0) {
-		console.log("BEEP BEEP");
 		categoryList = ls.getCategoryList();
+		polyList = ls.getPolyList();
 		let lastId = 0;
 		if (categoryList.length > 0) lastId = categoryList[categoryList.length - 1].id;
-		// categoryList에도 업데이트 해야함
+		
 		categoryList.push(createCategory(lastId + 1, "Unclassified"));
-		poly.category.push(lastId + 1);
+		polyList[index].category.push(lastId + 1);
 		categoryList = categoryList;
+		ls.setPolyList(polyList);
 		ls.setCategoryList(categoryList);
 	}
 
@@ -76,7 +78,6 @@
 						<CategoryPrompt
 							{poly}
 							on:add={(e) => {
-								console.log(e);
 								handleOnAdd(e);
 							}}
 						/>
