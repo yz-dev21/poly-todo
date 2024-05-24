@@ -33,14 +33,13 @@
 
 
 	// let selectedPoly = polyList[0];
-	let selectedPoly = 0;
+	let selectedPoly = 0; // will add feature
 	let selectedCategory = [];
 	categoryList.forEach((e) => {
 		if(e.poly == selectedPoly) {
 			selectedCategory.push(e);
 		}
 	})
-	
 </script>
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
@@ -54,7 +53,9 @@
 				<div class="card-body">
 					<ul class="list-group-flush p-0">
 						{#each todoList as todo}
-							<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
+							{#if todo.category.includes(category.id)}
+								<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
+							{/if}
 						{/each}
 						<li class="list-group-item border-0 d-flex align-items-center ps-0 mb-3 text-start">
 							<button
