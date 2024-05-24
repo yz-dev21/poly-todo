@@ -1,7 +1,7 @@
 <script>
 	import * as ls from '../../ls.js';
 
-	let todoList = ls.getTodoList();
+	// let todoList = ls.getTodoList();
 	let polyList = ls.getPolyList();
 	let categoryList = ls.getCategoryList();
 	
@@ -24,12 +24,27 @@
 		// item: [] // is this needed?
 	});
 
+	
 	function handleOnAdd(e) {
+		categoryList = ls.getCategoryList();
+		polyList = ls.getPolyList();
+		let lastId = 0;
+		if (categoryList.length > 0) lastId = categoryList[categoryList.length - 1].id;
+		
+		categoryList.push(createCategory(lastId + 1, e.detail.value));
+		poly.category.push(lastId + 1);
+
+		categoryList = categoryList;
+		ls.setCategoryList(categoryList);
+	}
+	
+	if(poly.category.length == 0) {
+		console.log("BEEP BEEP");
 		categoryList = ls.getCategoryList();
 		let lastId = 0;
 		if (categoryList.length > 0) lastId = categoryList[categoryList.length - 1].id;
-
-		categoryList.push(createCategory(lastId + 1, e.detail.value));
+		// categoryList에도 업데이트 해야함
+		categoryList.push(createCategory(lastId + 1, "Unclassified"));
 		poly.category.push(lastId + 1);
 		categoryList = categoryList;
 		ls.setCategoryList(categoryList);
@@ -61,6 +76,7 @@
 						<CategoryPrompt
 							{poly}
 							on:add={(e) => {
+								console.log(e);
 								handleOnAdd(e);
 							}}
 						/>

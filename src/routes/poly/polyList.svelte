@@ -13,6 +13,12 @@
 		category: []
 	});
 
+	if (polyList.length == 0) {
+		polyList.push(createPoly(0, "Inbox"));
+		polyList = polyList;
+		ls.setPolyList(polyList);
+	}
+
 	function handleOnAdd(e) {
 		let lastId = 0;
 		if (polyList.length > 0) lastId = polyList[polyList.length - 1].id;

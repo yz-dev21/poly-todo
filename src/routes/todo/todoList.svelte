@@ -6,6 +6,8 @@
 	const addTodoModalId = 'addTodoModal';
 
 	let todoList = ls.getTodoList();
+	let polyList = ls.getPolyList();
+	let categoryList = ls.getCategoryList();
 
 	function handleOnAdd(e) {
 		let lastId = 0;
@@ -21,21 +23,33 @@
 		todoList = todoList;
 		ls.setTodoList(todoList);
 	}
+
 	const handleOnChange = (id) => {
 		if (id == -1) {
 			todoList = todoList.filter((t) => t.id != id);
 		}
 		ls.setTodoList(todoList);
 	};
+
+
+	// let selectedPoly = polyList[0];
+	let selectedPoly = 0;
+	let selectedCategory = [];
+	categoryList.forEach((e) => {
+		if(e.poly == selectedPoly) {
+			selectedCategory.push(e);
+		}
+	})
+	
 </script>
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
 <div class="row d-flex overflow-x-auto flex-nowrap pt-3 h-100">
-	{#each { length: 10 } as _}
+	{#each selectedCategory as category}
 		<div class="col-sm-6 col-md-4 col-xl-3">
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">TITLE</h3>
+					<h3 class="card-title">{category.name}</h3>
 				</div>
 				<div class="card-body">
 					<ul class="list-group-flush p-0">
