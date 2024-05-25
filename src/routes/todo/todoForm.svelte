@@ -46,9 +46,12 @@
 	<div class="modal-footer">
 		{#if todo.id != 0}
 			<button
-				type="submit"
+				type="button"
 				class="btn btn-outline-primary"
-				on:click={() => (todo.id = -1)}
+				on:click={() => {
+					todo.id = -1;
+					handleOnSubmit();
+				}}
 				value="delete"><i class="bi bi-trash"></i></button
 			>
 		{/if}

@@ -31,20 +31,19 @@
 		ls.setTodoList(todoList);
 	};
 
-
 	// let selectedPoly = polyList[0];
 	let selectedPoly = 0; // will add feature
-	let selectedCategory = [];
+	let selectedCategories = [];
 	categoryList.forEach((e) => {
-		if(e.poly == selectedPoly) {
-			selectedCategory.push(e);
+		if (e.poly == selectedPoly) {
+			selectedCategories.push(e);
 		}
-	})
+	});
 </script>
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
 <div class="row d-flex overflow-x-auto flex-nowrap pt-3 h-100">
-	{#each selectedCategory as category}
+	{#each selectedCategories as category}
 		<div class="col-sm-6 col-md-4 col-xl-3">
 			<div class="card">
 				<div class="card-header">
