@@ -9,15 +9,18 @@
 	let polyList = ls.getPolyList();
 	let categoryList = ls.getCategoryList();
 
+	let highestId = 0;
+
 	function handleOnAdd(e) {
 		let lastId = 0;
 		if (todoList.length > 0) lastId = todoList[todoList.length - 1].id;
+		if (highestId <= lastId) highestId = lastId;
 
 		todoList.push({
-			id: lastId + 1,
+			id: highestId + 1,
 			text: e.detail.value.text,
 			done: e.detail.value.done,
-			category: []
+			category: [currentCategory]
 		});
 
 		todoList = todoList;
@@ -39,6 +42,7 @@
 			selectedCategories.push(e);
 		}
 	});
+	let currentCategory = 0;
 </script>
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
@@ -61,6 +65,7 @@
 								class="btn btn-primary w-100"
 								data-bs-toggle="modal"
 								data-bs-target="#{addTodoModalId}"
+								on:click={() => (currentCategory = category.id)}
 							>
 								<i class="bi bi-plus-lg"></i> Add a new todo
 							</button>
