@@ -3,6 +3,7 @@
 	const dispatch = createEventDispatcher();
 
 	export let icon = '';
+	export let text = '';
 	export let toggle = false;
 </script>
 
@@ -10,6 +11,7 @@
 	class="nav-link btn btn-primary link-dark text-start {toggle ? 'selected' : ''}"
 	on:click={() => dispatch('select')}
 	><i class={icon} id="bold_icon"></i>
+	<span class="m-2"><strong>{text}</strong></span>
 </button>
 
 <style>

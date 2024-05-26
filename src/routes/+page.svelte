@@ -9,18 +9,22 @@
 
 <div class="container-fluid vh-100 vw-100">
 	<div class="row">
-		<div class="col-sm-auto">
+		<div class="col-sm-2">
 			<Sidebar bind:selectedIndex />
-		</div>
-		<div class="col-md-3">
-			<PolyList />
 		</div>
 		<div class="col mt-3">
 			{#if selectedIndex == 0}
-				<TodoList />
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-6">
+						<TodoList />
+					</div>
+				</div>
 			{:else if selectedIndex == 1}
 				<Settings />
 			{/if}
+		</div>
+		<div class="col-md-3">
+			<PolyList />
 		</div>
 	</div>
 </div>
