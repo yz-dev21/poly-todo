@@ -7,29 +7,20 @@
 	let selectedIndex = 0;
 </script>
 
-<div class="container-fluid">
+<div class="container-fluid vh-100 vw-100">
 	<div class="row">
 		<div class="col-sm-auto">
 			<Sidebar bind:selectedIndex />
+		</div>
+		<div class="col-md-3">
+			<PolyList />
 		</div>
 		<div class="col mt-3">
 			{#if selectedIndex == 0}
 				<TodoList />
 			{:else if selectedIndex == 1}
-				<PolyList />
-			{:else if selectedIndex == 2}
 				<Settings />
 			{/if}
 		</div>
 	</div>
 </div>
-
-<style>
-	:global(body) {
-		font-family: 'Pretendard', sans-serif;
-	}
-	.container-fluid {
-		width: 100vw;
-		height: 100vh;
-	}
-</style>

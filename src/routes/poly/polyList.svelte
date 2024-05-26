@@ -7,14 +7,15 @@
 
 	const addPolyModalId = 'addPolyModal';
 
-	const createPoly = (pId, pName) => ({ // 걍 이거 handleOnAdd()에 넣어버릴까?
+	const createPoly = (pId, pName) => ({
+		// 걍 이거 handleOnAdd()에 넣어버릴까?
 		id: pId,
 		name: pName,
 		category: []
 	});
 
 	if (polyList.length == 0) {
-		polyList.push(createPoly(0, "Inbox"));
+		polyList.push(createPoly(0, 'Inbox'));
 		polyList = polyList;
 		ls.setPolyList(polyList);
 	}
@@ -36,7 +37,7 @@
 
 <PolyModal id={addPolyModalId} title="Add a new poly" on:submit={(e) => handleOnAdd(e)} />
 
-<div class="row">
+<div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top pt-3 pe-3 border-end vh-100 vw-5">
 	<div class="col">
 		<ul class="list-group-flush">
 			<button

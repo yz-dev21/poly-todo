@@ -46,33 +46,21 @@
 </script>
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
-<div class="row d-flex overflow-x-auto flex-nowrap pt-3 h-100">
-	{#each selectedCategories as category}
-		<div class="col-sm-6 col-md-4 col-xl-3">
-			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title">{category.name}</h3>
-				</div>
-				<div class="card-body">
-					<ul class="list-group-flush p-0">
-						{#each todoList as todo}
-							{#if todo.category.includes(category.id)}
-								<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
-							{/if}
-						{/each}
-						<li class="list-group-item border-0 d-flex align-items-center ps-0 mb-3 text-start">
-							<button
-								class="btn btn-primary w-100"
-								data-bs-toggle="modal"
-								data-bs-target="#{addTodoModalId}"
-								on:click={() => (currentCategory = category.id)}
-							>
-								<i class="bi bi-plus-lg"></i> Add a new todo
-							</button>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	{/each}
-</div>
+{#each { length: 10 } as _}
+	<div class="col-md-5 ps-5 mb-3">
+		<h1>title</h1>
+		<ul class="list-group mb-3">
+			{#each todoList as todo}
+				<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
+			{/each}
+		</ul>
+		<button
+			class="btn btn-primary w-100"
+			data-bs-toggle="modal"
+			data-bs-target="#{addTodoModalId}"
+			on:click={() => (currentCategory = category.id)}
+		>
+			<i class="bi bi-plus-lg"></i> Add a new todo
+		</button>
+	</div>
+{/each}
