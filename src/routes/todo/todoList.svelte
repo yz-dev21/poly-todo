@@ -47,7 +47,7 @@
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
 {#each { length: 10 } as _}
-	<div class="col-md-5 ps-5 mb-3">
+	<div class="col-md-5 ps-5 mb-3 w-100">
 		<h1>title</h1>
 		<ul class="list-group mb-3">
 			{#each todoList as todo}

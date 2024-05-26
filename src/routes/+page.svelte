@@ -12,15 +12,15 @@
 		<div class="col-sm-auto">
 			<Sidebar bind:selectedIndex />
 		</div>
-		<div class="col-md-3">
-			<PolyList />
-		</div>
 		<div class="col mt-3">
 			{#if selectedIndex == 0}
-				<TodoList />
+			<TodoList />
 			{:else if selectedIndex == 1}
-				<Settings />
+			<Settings />
 			{/if}
+		</div>
+		<div class="col-md-4">
+			<PolyList />
 		</div>
 	</div>
 </div>

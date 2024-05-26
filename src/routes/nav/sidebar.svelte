@@ -4,7 +4,7 @@
 	export let selectedIndex = 0;
 
 	let navs = [
-		'fs-4 bi bi-check2-square', 'fs-4 bi bi-bounding-box-circles','fs-4 bi bi-gear-wide-connected'
+		'fs-4 bi bi-check2-square','fs-4 bi bi-gear-wide-connected'
 	];
 </script>
 
