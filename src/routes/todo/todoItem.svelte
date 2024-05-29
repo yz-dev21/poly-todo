@@ -16,9 +16,12 @@
 	};
 </script>
 
-<li transition:slide={{ duration: 250 }} class="list-group-item">
+<button
+	transition:slide={{ duration: 250 }}
+	class="list-group-item list-group-item-dark text-start"
+>
 	<div class="row">
-		<div class="col text-start">
+		<div class="col">
 			<div class="form-check-inline">
 				<input
 					type="checkbox"
@@ -39,23 +42,16 @@
 		</div>
 		<div class="col-sm-2 text-end">
 			<button
-				class="btn btn-light btn-sm rounded-circle"
+				class="btn btn-transparent btn-sm rounded-circle"
 				data-bs-toggle="modal"
 				data-bs-target="#{editTodoModalId}"><i class="bi bi-three-dots"></i></button
 			>
 		</div>
 	</div>
-
 	<TodoModal id={editTodoModalId} title="Edit a todo" {todo} on:submit={(e) => handleOnEdit(e)} />
-</li>
+</button>
 
 <style>
-	.btn-light,
-	.btn-light:hover {
-		background-color: transparent;
-		outline: none;
-		border: none;
-	}
 	#strikethrough {
 		text-decoration: line-through;
 	}

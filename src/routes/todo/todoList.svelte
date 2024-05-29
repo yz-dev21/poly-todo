@@ -1,15 +1,16 @@
 <script>
 	import TodoItem from './todoItem.svelte';
 	import TodoModal from './todoModal.svelte';
+	import AddTodo from './addTodo.svelte';
 	import * as ls from '../../ls.js';
 
 	const addTodoModalId = 'addTodoModal';
 
 	let todoList = ls.getTodoList();
-	let polyList = ls.getPolyList();
-	let categoryList = ls.getCategoryList();
 
 	let highestId = 0;
+
+	let unorderedTodoList = [];
 
 	function handleOnAdd(e) {
 		let lastId = 0;
@@ -18,9 +19,9 @@
 
 		todoList.push({
 			id: highestId + 1,
-			text: e.detail.value.text,
-			done: e.detail.value.done,
-			category: [currentCategory]
+			text: e.detail.value,
+			done: false,
+			category: []
 		});
 
 		todoList = todoList;
@@ -33,34 +34,32 @@
 		}
 		ls.setTodoList(todoList);
 	};
-
-	// let selectedPoly = polyList[0];
-	let selectedPoly = 0; // will add feature
-	let selectedCategories = [];
-	categoryList.forEach((e) => {
-		if (e.poly == selectedPoly) {
-			selectedCategories.push(e);
-		}
-	});
-	let currentCategory = 0;
 </script>
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
-{#each { length: 10 } as _}
-	<div class="mb-3">
-		<h1>title</h1>
-		<ul class="list-group mb-3">
-			{#each todoList as todo}
-				<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
-			{/each}
-		</ul>
-		<button
-			class="btn btn-primary w-100"
-			data-bs-toggle="modal"
-			data-bs-target="#{addTodoModalId}"
-			on:click={() => (currentCategory = category.id)}
-		>
-			<i class="bi bi-plus-lg"></i> Add a new todo
-		</button>
+<div class="row text-center mb-4">
+	<span class="h4 title">TodoList</span>
+</div>
+<div class="row d-flex justify-content-center">
+	<div class="col-md-6">
+		<div class="mb-4">
+			<AddTodo on:submit={(e) => handleOnAdd(e)} />
+		</div>
+		{#each { length: 10 } as _}
+			<div class="mb-5">
+				<h2 class="title">Fuck me Kanye</h2>
+				<div class="list-group mb-3">
+					{#each todoList as todo}
+						<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
+					{/each}
+				</div>
+			</div>
+		{/each}
 	</div>
-{/each}
+</div>
+
+<style>
+	.title {
+		font-weight: bolder;
+	}
+</style>
