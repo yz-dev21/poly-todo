@@ -9,7 +9,7 @@
 
 <div class="container-fluid vh-100 vw-100">
 	<div class="row">
-		<div class="col-sm-auto">
+		<div class="col-sm-auto border-end border-dark-subtle bg-dark-subtle">
 			<Sidebar bind:selectedIndex />
 		</div>
 		<div class="col mt-3">

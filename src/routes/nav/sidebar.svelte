@@ -10,7 +10,7 @@
 	];
 </script>
 
-<div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top pt-3 pe-3 border-end vh-100 vw-5">
+<div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top pt-3 vh-100">
 	<ul class="nav nav-pills nav-fill flex-column mb-auto">
 		<li class="nav-item">
 			<a
@@ -22,13 +22,11 @@
 		</li>
 		<hr />
 		{#each navs as nav, index}
-			<li class="nav-item mb-3">
-				<NavItem
-					icon={nav}
-					toggle={selectedIndex == index}
-					on:select={() => (selectedIndex = index)}
-				/>
-			</li>
+			<NavItem
+				icon={nav}
+				toggle={selectedIndex == index}
+				on:select={() => (selectedIndex = index)}
+			/>
 		{/each}
 	</ul>
 </div>

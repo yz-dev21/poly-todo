@@ -6,11 +6,13 @@
 	export let toggle = false;
 </script>
 
-<button
-	class="nav-link btn btn-primary link-light text-start {toggle ? 'selected' : ''}"
-	on:click={() => dispatch('select')}
-	><i class={icon} id="bold_icon"></i>
-</button>
+<li class="nav-item mb-3">
+	<button
+		class="nav-link btn btn-primary link-light text-start {toggle ? 'selected' : ''}"
+		on:click={() => dispatch('select')}
+		><i class={icon} id="bold_icon"></i>
+	</button>
+</li>
 
 <style>
 	.btn-primary:hover {
