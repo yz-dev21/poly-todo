@@ -10,7 +10,7 @@
 
 	let highestId = 0;
 
-	let unorderedTodoList = [];
+	let unorderedList = [];
 
 	function handleOnAdd(e) {
 		let lastId = 0;
@@ -21,19 +21,22 @@
 			id: highestId + 1,
 			text: e.detail.value,
 			done: false,
-			category: []
+			categoryList: []
 		});
 
 		todoList = todoList;
 		ls.setTodoList(todoList);
 	}
-
 	const handleOnChange = (id) => {
 		if (id == -1) {
 			todoList = todoList.filter((t) => t.id != id);
 		}
 		ls.setTodoList(todoList);
 	};
+	const updateUnordered = () => {
+		unorderedList = todoList.filter((t) => t.categoryList.length == 0);
+	};
+	$: todoList, updateUnordered();
 </script>
 
 <TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
@@ -45,16 +48,15 @@
 		<div class="mb-4">
 			<AddTodo on:submit={(e) => handleOnAdd(e)} />
 		</div>
-		{#each { length: 10 } as _}
-			<div class="mb-5">
-				<h2 class="title">Fuck me Kanye</h2>
-				<div class="list-group mb-3">
-					{#each todoList as todo}
-						<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
-					{/each}
-				</div>
+		<div class="mb-5">
+			<h2 class="title">Todos</h2>
+			<div class="list-group mb-3">
+				{#each unorderedList as todo}
+					<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
+				{/each}
 			</div>
-		{/each}
+			<!-- categories... -->
+		</div>
 	</div>
 </div>
 
