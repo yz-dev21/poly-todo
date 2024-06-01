@@ -3,11 +3,7 @@
 
 	export let selectedIndex = 0;
 
-	let navs = [
-		'fs-4 bi bi-check2-square',
-		'fs-4 bi bi-bounding-box-circles',
-		'fs-4 bi bi-gear-wide-connected'
-	];
+	let navs = ['bi bi-check-square', 'bi bi-ui-checks-grid'];
 </script>
 
 <div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top pt-3 vh-100">
@@ -15,9 +11,9 @@
 		<li class="nav-item">
 			<a
 				href="https://github.com/yz-dev21/poly-todo"
-				class="link-light text-decoration-none"
+				class="link-light text-decoration-none fs-3"
 				target="_blank"
-				><i class="fs-3 bi bi-github"></i>
+				><i class="bi bi-github"></i>
 			</a>
 		</li>
 		<hr />

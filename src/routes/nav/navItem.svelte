@@ -8,9 +8,9 @@
 
 <li class="nav-item mb-3">
 	<button
-		class="nav-link btn btn-primary link-light text-start {toggle ? 'selected' : ''}"
+		class="nav-link btn btn-primary link-light fs-4 {toggle ? 'selected' : ''}"
 		on:click={() => dispatch('select')}
-		><i class={icon} id="bold_icon"></i>
+		><i class={icon}></i>
 	</button>
 </li>
 

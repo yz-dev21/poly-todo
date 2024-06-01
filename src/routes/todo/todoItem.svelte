@@ -16,10 +16,7 @@
 	};
 </script>
 
-<button
-	transition:slide={{ duration: 250 }}
-	class="list-group-item list-group-item-dark text-start"
->
+<li transition:slide={{ duration: 250 }} class="list-group-item list-group-item-dark text-start">
 	<div class="row">
 		<div class="col">
 			<div class="form-check-inline">
@@ -49,7 +46,7 @@
 		</div>
 	</div>
 	<TodoModal id={editTodoModalId} title="Edit a todo" {todo} on:submit={(e) => handleOnEdit(e)} />
-</button>
+</li>
 
 <style>
 	#strikethrough {
