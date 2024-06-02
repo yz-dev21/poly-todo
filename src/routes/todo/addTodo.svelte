@@ -24,7 +24,7 @@
 					<input
 						type="text"
 						placeholder="Add a new todo..."
-						class="form-control"
+						class="form-control input-transparent"
 						bind:value={inputValue}
 						autofocus
 					/>
@@ -38,13 +38,3 @@
 		</div>
 	</div>
 </form>
-
-<style>
-	input,
-	input:focus {
-		outline: none;
-		border: none;
-		box-shadow: none;
-		background-color: transparent;
-	}
-</style>

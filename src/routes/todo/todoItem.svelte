@@ -1,5 +1,5 @@
 <script>
-	import TodoModal from './todoModal.svelte';
+	import EditTodo from './editTodo.svelte';
 
 	import { slide } from 'svelte/transition';
 
@@ -45,7 +45,7 @@
 			>
 		</div>
 	</div>
-	<TodoModal id={editTodoModalId} title="Edit a todo" {todo} on:submit={(e) => handleOnEdit(e)} />
+	<EditTodo id={editTodoModalId} title="Edit a todo" {todo} on:submit={(e) => handleOnEdit(e)} />
 </li>
 
 <style>

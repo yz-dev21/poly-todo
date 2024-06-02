@@ -1,10 +1,7 @@
 <script>
 	import TodoItem from './todoItem.svelte';
-	import TodoModal from './todoModal.svelte';
 	import AddTodo from './addTodo.svelte';
 	import * as ls from '../../ls.js';
-
-	const addTodoModalId = 'addTodoModal';
 
 	let todoList = ls.getTodoList();
 
@@ -36,9 +33,25 @@
 	$: todoList, updateUnordered();
 </script>
 
-<TodoModal id={addTodoModalId} title="Add a new todo" on:submit={(e) => handleOnAdd(e)} />
 <div class="row text-center mb-4">
 	<h4 class="title">TodoList</h4>
+	<div class="dropdown">
+		<button
+			class="btn btn-secondary dropdown-toggle"
+			type="button"
+			data-bs-toggle="dropdown"
+			aria-expanded="false"
+		>
+			Dropdown button
+		</button>
+		<ul class="dropdown-menu dropdown-menu-dark bg-secondary-subtle">
+			<li><a class="dropdown-item active" href="#">Action</a></li>
+			<li><a class="dropdown-item" href="#">Another action</a></li>
+			<li><a class="dropdown-item" href="#">Something else here</a></li>
+			<li><hr class="dropdown-divider" /></li>
+			<li><a class="dropdown-item" href="#">Separated link</a></li>
+		</ul>
+	</div>
 </div>
 <div class="row d-flex justify-content-center">
 	<div class="col-md-6">
