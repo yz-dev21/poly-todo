@@ -3,7 +3,7 @@
 
 	export let selectedIndex = 0;
 
-	let navs = ['bi bi-check-square', 'bi bi-ui-checks-grid'];
+	let navs = ['bi bi-check-square', 'bi bi-ui-checks-grid', 'bi bi-gear-wide-connected'];
 </script>
 
 <div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top pt-3 vh-100">

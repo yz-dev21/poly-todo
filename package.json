@@ -24,6 +24,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-static": "^3.0.1"
+		"@sveltejs/adapter-static": "^3.0.1",
+		"file-saver": "^2.0.5"
 	}
 }
