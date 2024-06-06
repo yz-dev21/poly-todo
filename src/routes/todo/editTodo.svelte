@@ -36,7 +36,7 @@
 			<div class="mb-3">
 				<input
 					type="text"
-					class="form-control"
+					class="form-control bg-secondary-subtle"
 					placeholder="Text"
 					bind:value={todo.text}
 					bind:this={focusField}
@@ -53,7 +53,7 @@
 				<label class="form-check-label" for="todo_form_check{todo.id}">Done</label>
 			</div>
 		</div>
-		<div class="modal-footer">
+		<div class="modal-footer bg-dark-subtle">
 			{#if todo.id != 0}
 				<button
 					type="button"

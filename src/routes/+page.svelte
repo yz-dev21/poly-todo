@@ -4,9 +4,17 @@
 	import PolyList from './poly/polyList.svelte';
 	import Settings from './settings.svelte';
 
-	import { slide } from 'svelte/transition';
+	const getIndex = () => {
+		const index = sessionStorage.getItem('index');
+		if (!index) return 0;
+		return index;
+	};
+	const setIndex = (i) => {
+		sessionStorage.setItem('index', i.toString());
+	};
 
-	let selectedIndex = 0;
+	let selectedIndex = getIndex();
+	$: setIndex(selectedIndex);
 </script>
 
 <div class="container-fluid vh-100 vw-100">

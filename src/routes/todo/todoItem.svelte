@@ -45,7 +45,12 @@
 			>
 		</div>
 	</div>
-	<EditTodo id={editTodoModalId} title="Edit a todo" {todo} on:submit={(e) => handleOnEdit(e)} />
+	<EditTodo
+		id={editTodoModalId}
+		title="Edit todo #{todo.id}"
+		{todo}
+		on:submit={(e) => handleOnEdit(e)}
+	/>
 </li>
 
 <style>

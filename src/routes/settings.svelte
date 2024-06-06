@@ -38,9 +38,16 @@
 	};
 </script>
 
-<button class="btn btn-primary" on:click={() => download()}>download</button>
+<div class="row text-center mb-4">
+	<h4 class="title">Settings</h4>
+</div>
+<div class="row d-flex justify-content-center">
+	<div class="col-md-6">
+		<button class="btn btn-primary" on:click={() => download()}>download</button>
 
-<label class="btn btn-primary" for="upload"
-	>upload
-	<input type="file" id="upload" style="display: none;" on:change={(e) => upload(e)} />
-</label>
+		<label class="btn btn-primary" for="upload"
+			>upload
+			<input type="file" class="d-none" id="upload" on:change={(e) => upload(e)} />
+		</label>
+	</div>
+</div>

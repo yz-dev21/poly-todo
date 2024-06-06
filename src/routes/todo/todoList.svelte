@@ -68,9 +68,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	.title {
-		font-weight: bolder;
-	}
-</style>

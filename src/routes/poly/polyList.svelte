@@ -37,8 +37,11 @@
 
 <PolyModal id={addPolyModalId} title="Add a new poly" on:submit={(e) => handleOnAdd(e)} />
 
-<div class="d-flex flex-sm-column flex-row flex-nowrap sticky-top pt-3 pe-3 vh-100 vw-5">
-	<div class="col">
+<div class="row text-center mb-4">
+	<h4 class="title">PolyList</h4>
+</div>
+<div class="row d-flex justify-content-center">
+	<div class="col-md-6">
 		<ul class="list-group-flush">
 			<button
 				class="btn btn-primary mb-3"

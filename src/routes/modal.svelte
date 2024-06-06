@@ -19,8 +19,8 @@
 >
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h1 class="modal-title fs-5" id={label}>{title}</h1>
+			<div class="modal-header bg-dark-subtle">
+				<h4 class="modal-title title" id={label}>{title}</h4>
 				<button
 					type="button"
 					class="btn-close"
