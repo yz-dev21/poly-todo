@@ -43,6 +43,24 @@
 </div>
 <div class="row d-flex justify-content-center">
 	<div class="col-md-6">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-body bg-secondary-subtle border border-primary rounded">Click me!</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<div class="card-body bg-secondary-subtle border border-primary rounded">Click me!</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<div class="card-body bg-secondary-subtle border border-primary rounded">Click me!</div>
+				</div>
+			</div>
+		</div>
+
 		<button class="btn btn-primary" on:click={() => download()}>download</button>
 
 		<label class="btn btn-primary" for="upload"
