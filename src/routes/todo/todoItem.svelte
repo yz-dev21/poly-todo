@@ -31,8 +31,7 @@
 					}}
 				/>
 				<label
-					class="form-check-label"
-					id={todo.done ? 'strikethrough' : ''}
+					class="form-check-label {todo.done ? 'text-decoration-line-through' : ''}"
 					for="todo_check{todo.id}">{todo.text}</label
 				>
 			</div>

@@ -5,8 +5,8 @@
 	import Settings from './settings.svelte';
 
 	const getIndex = () => {
-		const index = sessionStorage.getItem('index');
-		if (!index) return 0;
+		let index = sessionStorage.getItem('index');
+		if (!index) index = 0;
 		return index;
 	};
 	const setIndex = (i) => {

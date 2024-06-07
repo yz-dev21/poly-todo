@@ -2,6 +2,8 @@
 	import { saveAs } from 'file-saver';
 	import * as ls from '../ls.js';
 
+	let fileInput;
+
 	const getDateString = () => {
 		const today = new Date();
 
@@ -38,34 +40,59 @@
 	};
 </script>
 
-<div class="row text-center mb-4">
+<div class="row text-center mb-5">
 	<h4 class="title">Settings</h4>
 </div>
-<div class="row d-flex justify-content-center">
-	<div class="col-md-6">
+<div class="row d-flex justify-content-center align-items-center">
+	<div class="col-md-6 mt-5">
 		<div class="row">
 			<div class="col">
-				<div class="card">
-					<div class="card-body bg-secondary-subtle border border-primary rounded">Click me!</div>
+				<div class="card big-card">
+					<button
+						class="card-body bg-secondary-subtle border border-primary rounded title"
+						on:click={() => download()}
+					>
+						<i class="bi bi-download bold-icon"></i> Download
+					</button>
 				</div>
 			</div>
 			<div class="col">
-				<div class="card">
-					<div class="card-body bg-secondary-subtle border border-primary rounded">Click me!</div>
+				<div class="card big-card text-center">
+					<button
+						class="card-body bg-secondary-subtle border border-primary rounded title"
+						on:click={() => fileInput.click()}
+					>
+						<i class="bi bi-download bold-icon"></i> Upload
+					</button>
+
+					<input
+						type="file"
+						class="d-none"
+						id="upload"
+						on:change={(e) => upload(e)}
+						bind:this={fileInput}
+					/>
 				</div>
 			</div>
 			<div class="col">
-				<div class="card">
-					<div class="card-body bg-secondary-subtle border border-primary rounded">Click me!</div>
+				<div class="card big-card">
+					<button class="card-body bg-dark-subtle border border-primary rounded title" disabled>
+						<div class="text-secondary"><i class="bi bi-dropbox"></i> Cloud</div></button
+					>
 				</div>
 			</div>
 		</div>
-
-		<button class="btn btn-primary" on:click={() => download()}>download</button>
-
-		<label class="btn btn-primary" for="upload"
-			>upload
-			<input type="file" class="d-none" id="upload" on:change={(e) => upload(e)} />
-		</label>
 	</div>
 </div>
+
+<style>
+	.big-card {
+		height: 200px;
+	}
+	.card-body:hover:not([disabled]) {
+		background-color: var(--bs-primary-bg-subtle) !important;
+	}
+	.bold-icon {
+		-webkit-text-stroke: 1px;
+	}
+</style>
