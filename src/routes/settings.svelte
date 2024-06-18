@@ -45,14 +45,18 @@
 </div>
 <div class="row d-flex justify-content-center align-items-center">
 	<div class="col-md-6 mt-5">
-		<div class="row">
+		<div class="row text-center">
+			<div class="col"><span class="h1 title">Data Backup & Import</span></div>
+		</div>
+		<div class="row mt-4">
 			<div class="col">
 				<div class="card big-card">
 					<button
 						class="card-body bg-secondary-subtle border border-primary rounded title"
 						on:click={() => download()}
 					>
-						<i class="bi bi-download bold-icon"></i> Download
+						<i class="bi bi-download bold-icon h1 mt-5"></i>
+						<p class="">Download</p>
 					</button>
 				</div>
 			</div>
@@ -62,9 +66,9 @@
 						class="card-body bg-secondary-subtle border border-primary rounded title"
 						on:click={() => fileInput.click()}
 					>
-						<i class="bi bi-download bold-icon"></i> Upload
+						<i class="bi bi-upload bold-icon h1"></i>
+						<p>Upload</p>
 					</button>
-
 					<input
 						type="file"
 						class="d-none"
@@ -77,7 +81,10 @@
 			<div class="col">
 				<div class="card big-card">
 					<button class="card-body bg-dark-subtle border border-primary rounded title" disabled>
-						<div class="text-secondary"><i class="bi bi-dropbox"></i> Cloud</div></button
+						<div class="text-secondary">
+							<i class="bi bi-dropbox h1"></i>
+							<p>Cloud</p>
+						</div></button
 					>
 				</div>
 			</div>

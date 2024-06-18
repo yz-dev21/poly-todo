@@ -20,7 +20,7 @@
 	}
 	.selected {
 		color: white !important;
-		background-color: #106cfc;
+		background-color: var(--bs-primary);
 		outline: none;
 	}
 </style>
