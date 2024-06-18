@@ -26,6 +26,7 @@
 						placeholder="Add a new todo..."
 						class="form-control input-transparent"
 						bind:value={inputValue}
+						spellcheck="false"
 						autofocus
 					/>
 				</div>
