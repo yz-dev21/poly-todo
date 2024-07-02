@@ -22,7 +22,7 @@
 		<div class="col-sm-auto border-end border-dark-subtle bg-dark-subtle">
 			<Sidebar bind:selectedIndex />
 		</div>
-		<div class="col mt-3">
+		<div class="col">
 			{#if selectedIndex == 0}
 				<TodoList />
 			{:else if selectedIndex == 1}

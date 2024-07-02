@@ -2,10 +2,10 @@
 	import TodoItem from './todoItem.svelte';
 	import AddTodo from './addTodo.svelte';
 	import * as ls from '../../ls.js';
+	import PolySelector from './polySelector.svelte';
 
 	let todoList = ls.getTodoList();
-
-	let unorderedList = [];
+	let selectedPoly = 0;
 
 	function handleOnAdd(e) {
 		let lastId = 0;
@@ -14,8 +14,7 @@
 		todoList.push({
 			id: lastId + 1,
 			text: e.detail.value,
-			done: false,
-			categoryList: []
+			done: false
 		});
 
 		todoList = todoList;
@@ -27,44 +26,32 @@
 		}
 		ls.setTodoList(todoList);
 	};
-	const updateUnordered = () => {
-		unorderedList = todoList.filter((t) => t.categoryList.length == 0);
-	};
-	$: todoList, updateUnordered();
+	$: console.log(selectedPoly);
 </script>
 
-<div class="row text-center mb-4">
-	<h4 class="title">TodoList</h4>
-	<div class="dropdown">
-		<button
-			class="btn btn-secondary dropdown-toggle"
-			type="button"
-			data-bs-toggle="dropdown"
-			aria-expanded="false"
-		>
-			Dropdown button
-		</button>
-		<ul class="dropdown-menu dropdown-menu-dark bg-secondary-subtle">
-			<li><a class="dropdown-item active" href="#">Action</a></li>
-			<li><a class="dropdown-item" href="#">Another action</a></li>
-			<li><a class="dropdown-item" href="#">Something else here</a></li>
-			<li><hr class="dropdown-divider" /></li>
-			<li><a class="dropdown-item" href="#">Separated link</a></li>
-		</ul>
+<div class="row">
+	<!--   -->
+	<div class="col-sm-2 border-end border-secondary-subtle bg-secondary-subtle">
+		<PolySelector bind:selectedPoly />
 	</div>
-</div>
-<div class="row d-flex justify-content-center">
-	<div class="col-md-6">
-		<div class="mb-5">
-			<AddTodo on:submit={(e) => handleOnAdd(e)} />
+	<div class="col">
+		<div class="row text-center mt-3">
+			<h4 class="title">TodoList</h4>
 		</div>
-		<div class="mb-5">
-			<ul class="list-group mb-3">
-				{#each unorderedList as todo}
-					<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
-				{/each}
-			</ul>
-			<!-- categories... -->
+		<div class="row d-flex justify-content-center mt-5">
+			<div class="col-md-7">
+				<div class="mb-5">
+					<AddTodo on:submit={(e) => handleOnAdd(e)} />
+				</div>
+				<div class="mb-5">
+					<ul class="list-group mb-3">
+						{#each todoList as todo}
+							<TodoItem bind:todo on:change={() => handleOnChange(todo.id)} />
+						{/each}
+					</ul>
+					<!-- categories... -->
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

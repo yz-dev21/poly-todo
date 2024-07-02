@@ -2,16 +2,20 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	export let icon = '';
+	export let text = '';
 	export let toggle = false;
 </script>
 
 <li class="nav-item mb-3">
-	<button
-		class="nav-link btn btn-primary link-light {toggle ? 'selected' : ''}"
-		on:click={() => dispatch('select')}
-		><i class={icon}></i>
-	</button>
+	<div class="row">
+		<div class="col">
+			<button
+				class="nav-link btn btn-primary link-light text-start {toggle ? 'selected' : ''}"
+				on:click={() => dispatch('select')}
+				>{text}
+			</button>
+		</div>
+	</div>
 </li>
 
 <style>
